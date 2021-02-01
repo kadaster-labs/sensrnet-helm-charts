@@ -28,10 +28,8 @@ mongodb: # configuration from https://github.com/bitnami/charts/blob/master/bitn
     enabled: false
   replicaCount: 3
   persistence:
-    enabled: false
-    accessModes:
-      - ReadWriteOnce
-    size: 50Gi
+    enabled: true
+    size: 10Gi
   service:
     type: ClusterIP
     port: 27017
@@ -54,7 +52,8 @@ eventstore: # configuration from https://github.com/EventStore/EventStore.Charts
   scavenging:
     enabled: true
   persistence:
-    enabled: false
+    enabled: true
+    size: 12Gi
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
