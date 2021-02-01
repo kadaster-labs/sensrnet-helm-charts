@@ -1,0 +1,24 @@
+dependencies:
+- name: traefik
+  repository: https://helm.traefik.io/traefik
+  version: 9.13.0
+- name: multichain-node
+  repository: file://../multichain-node
+  version: 0.1.0
+- name: registry-backend
+  repository: file://../registry-backend
+  version: 0.1.0
+- name: mongodb
+  repository: https://charts.bitnami.com/bitnami
+  version: 10.6.0
+- name: eventstore
+  repository: https://eventstore.github.io/EventStore.Charts
+  version: 0.2.5
+- name: sync-bridge
+  repository: file://../sync-bridge
+  version: 0.1.0
+- name: registry-frontend
+  repository: file://../registry-frontend
+  version: 0.1.0
+digest: sha256:d27b56e9f0aba218d75a295a276971adceb1abfa09a84c5f12f5b8ab082c1f8e
+generated: "2021-01-29T15:03:32.3189185+01:00"

@@ -1,0 +1,51 @@
+# Default values for sync-bridge.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: sensrnetnl/sync-bridge
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 3500
+
+syncBridge:
+  eventstore:
+    host: eventstore-cluster
+    port: ext-tcp-port
+  multichain:
+    host: multichain-node
+    port: 8570
+    jsonRPC:
+      username: username
+      password: password
+  mongo:
+    host: mongo
+    port: 27017
+    database: sensrnet
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

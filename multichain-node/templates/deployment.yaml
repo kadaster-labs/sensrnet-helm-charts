@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "multichain-node.fullname" . }}
+  labels:
+    {{- include "multichain-node.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "multichain-node.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "multichain-node.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: CHAINNAME
+              value: {{ .Values.multiChainNode.chainName }}
+            {{ if .Values.multiChainNode.connectToExistingChain }}
+            - name: MAIN_NODE_HOST
+              value: "{{ .Values.multiChainNode.mainNodeHost }}"
+            {{ else }}
+            - name: PARAM_TARGET_BLOCK_SIZE
+              value: "target-block-time|30"
+            - name: PARAM_ANYONE_CAN_CONNECT
+              value: "anyone-can-connect|true"
+            - name: PARAM_ANYONE_CAN_MINE
+              value: "anyone-can-mine|true"
+            {{ end }}
+            - name: NETWORK_PORT
+              value: "8571"
+            - name: RPC_ALLOW_IP
+              value: "0.0.0.0/0.0.0.0"
+            - name: RPC_USER
+              value: {{ .Values.multiChainNode.rpc.username }}
+            - name: RPC_PASSWORD
+              value: {{ .Values.multiChainNode.rpc.password }}
+            - name: RPC_PORT
+              value: "8570"
+          ports:
+            - name: rpc
+              containerPort: 8570
+            - name: tcp
+              containerPort: 8571
+            - name: web
+              containerPort: 2750
+          volumeMounts:
+            - mountPath: /data
+              name: multichain-node-data
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: multichain-node-data
+          persistentVolumeClaim:
+            claimName: multichain-node-pvc
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

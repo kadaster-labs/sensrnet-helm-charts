@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "sync-bridge.fullname" . }}
+  labels:
+    {{- include "sync-bridge.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "sync-bridge.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "sync-bridge.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: EVENT_STORE_HOST
+              value: {{ .Values.syncBridge.eventstore.host }}
+            - name: EVENT_STORE_PORT
+              value: "{{ .Values.syncBridge.eventstore.port }}"
+            - name: MULTICHAIN_HOST
+              value: {{ .Values.syncBridge.multichain.host }}
+            - name: MULTICHAIN_USER
+              value: {{ .Values.syncBridge.multichain.jsonRPC.username }}
+            - name: MULTICHAIN_PASSWORD
+              value: {{ .Values.syncBridge.multichain.jsonRPC.password }}
+            - name: MULTICHAIN_PORT
+              value: "{{ .Values.syncBridge.multichain.port }}"
+            - name: MONGO_HOST
+              value: {{ .Values.syncBridge.mongo.host }}
+            - name: MONGO_PORT
+              value: "{{ .Values.syncBridge.mongo.port }}"
+            - name: MONGO_DATABASE
+              value: {{ .Values.syncBridge.mongo.database }}
+          ports:
+            - name: http
+              containerPort: 3500
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

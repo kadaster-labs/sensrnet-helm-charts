@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: 0.1.1
+description: A Helm chart for the SensRNet registry back-end
+home: https://github.com/kadaster-labs/sensrnet-home
+icon: https://github.com/kadaster-labs/sensrnet-home/blob/master/images/SensRNet-logo.png
+name: registry-backend
+sources:
+  - https://github.com/kadaster-labs/sensrnet-registry-backend
+type: application
+version: 0.1.0
