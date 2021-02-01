@@ -1,5 +1,14 @@
 apiVersion: v2
 appVersion: 0.1.1
+dependencies:
+  - name: mongodb
+    version: "10.6.0"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: mongodb.enabled
+  - name: eventstore
+    version: "0.2.5"
+    repository: "https://eventstore.github.io/EventStore.Charts"
+    condition: eventstore.enabled
 description: A Helm chart for the SensRNet registry back-end
 home: https://github.com/kadaster-labs/sensrnet-home
 icon: https://github.com/kadaster-labs/sensrnet-home/blob/master/images/SensRNet-logo.png

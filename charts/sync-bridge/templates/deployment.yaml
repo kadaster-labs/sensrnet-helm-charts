@@ -24,23 +24,23 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: EVENT_STORE_HOST
-              value: {{ .Values.syncBridge.eventstore.host }}
+              value: {{ .Values.settings.eventstore.host }}
             - name: EVENT_STORE_PORT
-              value: "{{ .Values.syncBridge.eventstore.port }}"
+              value: "{{ .Values.settings.eventstore.port }}"
             - name: MULTICHAIN_HOST
-              value: {{ .Values.syncBridge.multichain.host }}
+              value: {{ .Values.settings.multichain.host }}
             - name: MULTICHAIN_USER
-              value: {{ .Values.syncBridge.multichain.jsonRPC.username }}
+              value: {{ .Values.settings.multichain.jsonRPC.username }}
             - name: MULTICHAIN_PASSWORD
-              value: {{ .Values.syncBridge.multichain.jsonRPC.password }}
+              value: {{ .Values.settings.multichain.jsonRPC.password }}
             - name: MULTICHAIN_PORT
-              value: "{{ .Values.syncBridge.multichain.port }}"
+              value: "{{ .Values.settings.multichain.port }}"
             - name: MONGO_HOST
-              value: {{ .Values.syncBridge.mongo.host }}
+              value: {{ .Values.settings.mongo.host }}
             - name: MONGO_PORT
-              value: "{{ .Values.syncBridge.mongo.port }}"
+              value: "{{ .Values.settings.mongo.port }}"
             - name: MONGO_DATABASE
-              value: {{ .Values.syncBridge.mongo.database }}
+              value: {{ .Values.settings.mongo.database }}
           ports:
             - name: http
               containerPort: 3500

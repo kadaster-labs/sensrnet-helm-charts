@@ -5,23 +5,34 @@
 - Helm >= 3.2
 - Cluster credentials in kubeconfig
 
-## SensRNet stack
+## Installation
+The SensRNet application has Traefik with additional settings as dependency, so install it first:
+```
+helm install traefik traefik/traefik \
+  --set ports.multichain.port=8571 \
+  --set ports.multichain.expose=true \
+  --set ports.multichain.exposedPort=8571 \
+  --set ports.multichain.protocol=TCP
+```
 
-Registry-node contains all components needed for a SensRNet Registry Node. These charts assume that you run >= 3 nodes in your cluster. The charts for individual components can be found in their respective folders.
-
+Then, the individual components can be installed:
 ```
 git clone git@github.com:kadaster-labs/sensrnet-helm-charts.git
 cd sensrnet-helm-charts
 
-helm upgrade --install registry-node registry-node/
+helm upgrade --install multichain-node charts/multichain-node/
+helm upgrade --install registry-backend charts/registry-backend/
+helm upgrade --install sync-bridge charts/sync-bridge/
+helm upgrade --install registry-frontend charts/registry-frontend/
 ```
-The values can be found in `registry-node/values.yaml`.
+
+Overridable values can be found in the respective folders.
 
 Before you can start sharing data with the network, you'll first need sending permissions, as a node will have read-only access by default. First, find the wallet address of your MultiChain pod. Then, share this address with the network admins. Once they've given you sending permissions, you can start participating in the SensRNet distributed ledger.
 
 ```
 kubectl get pods -A
-kubectl exec -n registry-node <POD_NAME> -- multichain-cli -datadir=/data SensRNet getaddresses
+kubectl exec -n registry-node-stack <POD_NAME> -- multichain-cli -datadir=/data SensRNet getaddresses
 ```
 
 ## Find Us

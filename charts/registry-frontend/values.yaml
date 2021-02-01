@@ -8,7 +8,7 @@ image:
   repository: sensrnetnl/registry-frontend
   pullPolicy: IfNotPresent
 
-registryFrontend:
+settings:
   apiUrl: /api
 
 nameOverride: ""

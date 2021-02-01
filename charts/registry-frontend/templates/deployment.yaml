@@ -24,7 +24,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: API_URL
-              value: {{ .Values.registryFrontend.apiUrl }}
+              value: {{ .Values.settings.apiUrl }}
           args:
             - -health-status=true
           ports:

@@ -27,9 +27,9 @@ service:
   type: ClusterIP
   port: 3500
 
-syncBridge:
+settings:
   eventstore:
-    host: eventstore-cluster
+    host: backend-eventstore
     port: ext-tcp-port
   multichain:
     host: multichain-node
@@ -38,14 +38,11 @@ syncBridge:
       username: username
       password: password
   mongo:
-    host: mongo
+    host: backend-mongodb-headless
     port: 27017
     database: sensrnet
 
 resources: {}
-
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}

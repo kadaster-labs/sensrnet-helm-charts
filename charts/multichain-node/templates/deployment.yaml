@@ -24,10 +24,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: CHAINNAME
-              value: {{ .Values.multiChainNode.chainName }}
-            {{ if .Values.multiChainNode.connectToExistingChain }}
+              value: {{ .Values.settings.chainName }}
+            {{ if .Values.settings.connectToExistingChain }}
             - name: MAIN_NODE_HOST
-              value: "{{ .Values.multiChainNode.mainNodeHost }}"
+              value: "{{ .Values.settings.mainNodeHost }}"
             {{ else }}
             - name: PARAM_TARGET_BLOCK_SIZE
               value: "target-block-time|30"
@@ -41,9 +41,9 @@ spec:
             - name: RPC_ALLOW_IP
               value: "0.0.0.0/0.0.0.0"
             - name: RPC_USER
-              value: {{ .Values.multiChainNode.rpc.username }}
+              value: {{ .Values.settings.rpc.username }}
             - name: RPC_PASSWORD
-              value: {{ .Values.multiChainNode.rpc.password }}
+              value: {{ .Values.settings.rpc.password }}
             - name: RPC_PORT
               value: "8570"
           ports:

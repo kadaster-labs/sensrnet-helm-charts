@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: 0.2.1
+description: A Helm chart for Kubernetes
+home: https://github.com/kadaster-labs/sensrnet-home
+icon: https://github.com/kadaster-labs/sensrnet-home/blob/master/images/SensRNet-logo.png
+name: registry-frontend
+sources:
+  - https://github.com/kadaster-labs/sensrnet-registry-frontend
+type: application
+version: 0.1.0

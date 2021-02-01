@@ -1,0 +1,104 @@
+# Default values for registry-backend.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: sensrnetnl/registry-backend
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+settings:
+  eventstore:
+    host: backend-eventstore
+    port: ext-tcp-port
+  mongo:
+    host: backend-mongodb-headless
+    port: 27017
+    database: sensrnet
+
+mongodb: # configuration from https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml
+  enabled: true
+  imageTag: 4.4.3
+  architecture: replicaset
+  auth:
+    enabled: false
+  replicaCount: 1
+  persistence:
+    enabled: false
+    accessModes:
+      - ReadWriteOnce
+    size: 50Gi
+  service:
+    type: ClusterIP
+    port: 27017
+    portName: mongo-service
+  podAntiAffinityPreset: hard
+
+eventstore: # configuration from https://github.com/EventStore/EventStore.Charts/blob/master/stable/eventstore/values.yaml
+  enabled: true
+  clusterSize: 1
+  imageTag: release-5.0.1
+  eventStoreConfig:
+    EVENTSTORE_DISCOVER_VIA_DNS: true
+    EVENTSTORE_CLUSTER_DNS: registry-node-stack-eventstore
+    EVENTSTORE_DEV: true
+    EVENTSTORE_MEM_DB: false
+    EVENTSTORE_RUN_PROJECTIONS: All
+    EVENTSTORE_START_STANDARD_PROJECTIONS: true
+    EVENTSTORE_ENABLE_EXTERNAL_TCP: true
+    EVENTSTORE_DISABLE_EXTERNAL_TCP_TLS: true
+  scavenging:
+    enabled: true
+  persistence:
+    enabled: false
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+            - eventstore
+        topologyKey: "kubernetes.io/hostname"
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
