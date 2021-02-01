@@ -8,7 +8,9 @@ settings:
   connectToExistingChain: false # If false, create a new network
   mainNodeHost: 1.2.3.4 # is ignored if connectToExistingChain is false
   chainName: SensRNet
+  networkPort: 8571
   rpc:
+    port: 8570
     username: username
     password: password
 

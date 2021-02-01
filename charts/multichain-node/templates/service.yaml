@@ -7,10 +7,10 @@ metadata:
 spec:
   ports:
     - name: rpc
-      port: 8570
+      port: {{ .Values.settings.rpc.port }}
       targetPort: rpc
     - name: tcp
-      port: 8571
+      port: {{ .Values.settings.networkPort }}
       targetPort: tcp
     - name: web
       port: 2750

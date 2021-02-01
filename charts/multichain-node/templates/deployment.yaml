@@ -37,7 +37,7 @@ spec:
               value: "anyone-can-mine|true"
             {{ end }}
             - name: NETWORK_PORT
-              value: "8571"
+              value: "{{ .Values.settings.networkPort }}"
             - name: RPC_ALLOW_IP
               value: "0.0.0.0/0.0.0.0"
             - name: RPC_USER
@@ -45,12 +45,12 @@ spec:
             - name: RPC_PASSWORD
               value: {{ .Values.settings.rpc.password }}
             - name: RPC_PORT
-              value: "8570"
+              value: "{{ .Values.settings.rpc.port }}"
           ports:
             - name: rpc
-              containerPort: 8570
+              containerPort: {{ .Values.settings.rpc.port }}
             - name: tcp
-              containerPort: 8571
+              containerPort: {{ .Values.settings.networkPort }}
             - name: web
               containerPort: 2750
           volumeMounts:

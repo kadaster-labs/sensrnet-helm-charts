@@ -18,5 +18,5 @@ spec:
     kind: Rule
     services:
     - name: {{ $fullName }}
-      port: 8571
+      port: {{ .Values.settings.networkPort }}
 {{- end }}

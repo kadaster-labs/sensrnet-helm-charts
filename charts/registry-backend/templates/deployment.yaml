@@ -26,11 +26,11 @@ spec:
           - name: EVENT_STORE_PORT
             value: "{{ .Values.settings.eventstore.port }}"
           - name: JWT_SECRET
-            value: your-face
+            value: {{ .Values.settings.jwtSecret }}
           - name: JWT_ACCESS_EXPIRES_IN
-            value: "86400"
+            value: "{{ .Values.settings.jwtAccessExpiresIn }}"
           - name: JWT_REFRESH_EXPIRES_IN
-            value: "604800"
+            value: "{{ .Values.settings.jwtRefreshExpiresIn }}"
           - name: MONGO_HOST
             value: {{ .Values.settings.mongo.host }}
           - name: MONGO_PORT

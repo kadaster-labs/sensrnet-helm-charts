@@ -9,6 +9,9 @@ fullnameOverride: ""
 
 
 settings:
+  jwtSecret: CHANGE_THIS
+  jwtAccessExpiresIn: 86400
+  jwtRefreshExpiresIn: 604800
   eventstore:
     host: backend-eventstore
     port: ext-tcp-port
