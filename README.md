@@ -15,18 +15,28 @@ helm install traefik traefik/traefik \
   --set ports.multichain.protocol=TCP
 ```
 
-Then, the individual components can be installed:
+Then, the individual components can be installed. Currently, they're not in a registry yet, so you'll have to clone this repo before continuing
 ```
 git clone git@github.com:kadaster-labs/sensrnet-helm-charts.git
 cd sensrnet-helm-charts
+```
+### Multichain
 
-helm upgrade --install multichain-node charts/multichain-node/
+Fill in the correct mainNodeHost to connect to the SensRNet blockchain.
+```
+helm upgrade --install multichain-node charts/multichain-node/ \
+  --set settings.connectToExistingChain=true \
+  --set settings.mainNodeHost=<MAIN_HOST>
+```
+
+The other components can be installed (using the default values) using:
+```
 helm upgrade --install registry-backend charts/registry-backend/
 helm upgrade --install sync-bridge charts/sync-bridge/
 helm upgrade --install registry-frontend charts/registry-frontend/
 ```
 
-Overridable values can be found in the respective folders.
+Other overridable values can be found in the respective folders.
 
 Before you can start sharing data with the network, you'll first need sending permissions, as a node will have read-only access by default. First, find the wallet address of your MultiChain pod. Then, share this address with the network admins. Once they've given you sending permissions, you can start participating in the SensRNet distributed ledger.
 
