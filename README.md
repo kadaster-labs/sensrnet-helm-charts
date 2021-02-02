@@ -43,6 +43,7 @@ helm upgrade --install registry-frontend charts/registry-frontend/
 
 Other overridable values can be found in the respective folders.
 
+## Sharing sensor data
 Before you can start sharing data with the network, you'll first need sending permissions, as a node will have read-only access by default. First, find the wallet address of your MultiChain pod. Then, share this address with the network admins. Once they've given you sending permissions, you can start participating in the SensRNet distributed ledger.
 
 ```
