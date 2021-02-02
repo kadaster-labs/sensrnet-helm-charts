@@ -18,30 +18,48 @@ helm install traefik traefik/traefik \
   --set ports.multichain.protocol=TCP
 ```
 
-Then, the individual components can be installed. The charts assume that you run >= 3 nodes for pod scheduling of MongoDB and EventStore databases. On testing environments containing less nodes, changes the Eventstore clusterSize in `charts/registry-backend/values.yaml`. Normally, this would be done on the command line, but there is a bug in the EventStore charts. 
+Then, the individual components can be installed. 
+### Using the chart repo
+> :warning: The charts assume that you run >= 3 nodes for pod scheduling of MongoDB and EventStore databases. Setting the clusterSize of Eventstore using `--set` is not working, we're investigating a fix. On testing environments containing less nodes, please proceed to "Using the raw charts".
+> 
+The chart packages are are hosted on GitHub Pages, so you can add that repo.
+```
+helm repo add sensrnet https://kadaster-labs.github.io/sensrnet-helm-charts/
+helm repo update
+```
+```
+helm upgrade --install multichain-node sensrnet/multichain-node \
+  --set settings.connectToExistingChain=true \
+  --set settings.mainNodeHost=<MAIN_HOST>
+```
+> Fill in the correct mainNodeHost to connect to the SensRNet blockchain.
 
-Currently, the chart packages are not in a registry yet, so you'll have to clone this repo before continuing
+The other components can be installed (using the default values) using:
+```
+helm upgrade --install registry-backend sensrnet/registry-backend
+helm upgrade --install sync-bridge sensrnet/sync-bridge
+helm upgrade --install registry-frontend sensrnet/registry-frontend
+```
+
+Other overridable values can be found in the respective folders.
+
+### Using the raw charts
+Alternatively, if you want to edit the charts directly, for example to set the number of nodes, checkout the chart repo
 ```
 git clone git@github.com:kadaster-labs/sensrnet-helm-charts.git
 cd sensrnet-helm-charts
 ```
-### Multichain
-
-Fill in the correct mainNodeHost to connect to the SensRNet blockchain.
+Make your changes, then
 ```
 helm upgrade --install multichain-node charts/multichain-node/ \
   --set settings.connectToExistingChain=true \
   --set settings.mainNodeHost=<MAIN_HOST>
-```
-
-The other components can be installed (using the default values) using:
-```
 helm upgrade --install registry-backend charts/registry-backend/
 helm upgrade --install sync-bridge charts/sync-bridge/
 helm upgrade --install registry-frontend charts/registry-frontend/
 ```
 
-Other overridable values can be found in the respective folders.
+
 
 ## Sharing sensor data
 Before you can start sharing data with the network, you'll first need sending permissions, as a node will have read-only access by default. First, find the wallet address of your MultiChain pod. Then, share this address with the network admins. Once they've given you sending permissions, you can start participating in the SensRNet distributed ledger.
