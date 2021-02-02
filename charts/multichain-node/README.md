@@ -18,7 +18,6 @@ A Helm chart for the SensRNet multichain node
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"sensrnetnl/multichain-node"` |  |
-| imagePullSecrets | list | `[]` |  |
 | ingress.annotations."kubernetes.io/ingress.class" | string | `"traefik"` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
@@ -33,7 +32,9 @@ A Helm chart for the SensRNet multichain node
 | settings.chainName | string | `"SensRNet"` |  |
 | settings.connectToExistingChain | bool | `false` |  |
 | settings.mainNodeHost | string | `"1.2.3.4"` |  |
+| settings.p2pPort | int | `8571` |  |
 | settings.rpc.password | string | `"password"` |  |
+| settings.rpc.port | int | `8570` |  |
 | settings.rpc.username | string | `"username"` |  |
 | tolerations | list | `[]` |  |
 

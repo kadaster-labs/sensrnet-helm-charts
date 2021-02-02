@@ -31,7 +31,6 @@ A Helm chart for Kubernetes
 | securityContext | object | `{}` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
-| serviceAccount.create | bool | `false` |  |
 | settings.apiUrl | string | `"/api"` |  |
 | tolerations | list | `[]` |  |
 
