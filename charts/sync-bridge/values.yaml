@@ -25,7 +25,7 @@ service:
 
 settings:
   eventstore:
-    host: backend-eventstore
+    host: registry-backend-eventstore # NAME-eventstore, NAME has to match Helm deployment name of backend
     port: ext-tcp-port
   multichain:
     host: multichain-node
@@ -34,7 +34,7 @@ settings:
       username: username
       password: password
   mongo:
-    host: backend-mongodb-headless
+    host: registry-backend-mongodb-headless # NAME-mongodb-headless, NAME has to match Helm deployment name of backend
     port: 27017
     database: sensrnet
 

@@ -13,10 +13,10 @@ settings:
   jwtAccessExpiresIn: 86400
   jwtRefreshExpiresIn: 604800
   eventstore:
-    host: backend-eventstore
+    host: registry-backend-eventstore # NAME-eventstore, NAME has to match Helm deployment name
     port: ext-tcp-port
   mongo:
-    host: backend-mongodb-headless
+    host: registry-backend-mongodb-headless # NAME-mongodb-headless, NAME has to match Helm deployment name
     port: 27017
     database: sensrnet
 

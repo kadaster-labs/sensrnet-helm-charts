@@ -70,13 +70,13 @@ A Helm chart for the SensRNet registry back-end
 | securityContext.runAsUser | int | `1000` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
-| settings.eventstore.host | string | `"backend-eventstore"` |  |
+| settings.eventstore.host | string | `"registry-backend-eventstore"` |  |
 | settings.eventstore.port | string | `"ext-tcp-port"` |  |
 | settings.jwtAccessExpiresIn | int | `86400` |  |
 | settings.jwtRefreshExpiresIn | int | `604800` |  |
 | settings.jwtSecret | string | `"CHANGE_THIS"` |  |
 | settings.mongo.database | string | `"sensrnet"` |  |
-| settings.mongo.host | string | `"backend-mongodb-headless"` |  |
+| settings.mongo.host | string | `"registry-backend-mongodb-headless"` |  |
 | settings.mongo.port | int | `27017` |  |
 | tolerations | list | `[]` |  |
 
