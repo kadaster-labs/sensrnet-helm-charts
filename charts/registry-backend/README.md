@@ -28,7 +28,7 @@ A Helm chart for the SensRNet registry back-end
 | eventstore.affinity.podAntiAffinity.requiredDuringSchedulingIgnoredDuringExecution[0].topologyKey | string | `"kubernetes.io/hostname"` |  |
 | eventstore.clusterSize | int | `3` |  |
 | eventstore.enabled | bool | `true` |  |
-| eventstore.eventStoreConfig.EVENTSTORE_CLUSTER_DNS | string | `"registry-node-stack-eventstore"` |  |
+| eventstore.eventStoreConfig.EVENTSTORE_CLUSTER_DNS | string | `"registry-backend-eventstore"` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_DEV | bool | `true` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_DISABLE_EXTERNAL_TCP_TLS | bool | `true` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_DISCOVER_VIA_DNS | bool | `true` |  |
