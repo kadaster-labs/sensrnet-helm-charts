@@ -18,5 +18,5 @@ spec:
     kind: Rule
     services:
     - name: {{ $fullName }}
-      port: {{ .Values.settings.networkPort }}
+      port: {{ .Values.settings.p2pPort }}
 {{- end }}
