@@ -47,7 +47,7 @@ Before you can start sharing data with the network, you'll first need sending pe
 
 ```
 kubectl get pods -A
-kubectl exec -n registry-node-stack <POD_NAME> -- multichain-cli -datadir=/data SensRNet getaddresses
+kubectl exec <POD_NAME> -- multichain-cli -datadir=/data SensRNet getaddresses
 ```
 
 ## Find Us
