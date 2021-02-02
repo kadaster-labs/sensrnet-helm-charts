@@ -8,6 +8,9 @@
 ## Installation
 The SensRNet application has Traefik with additional settings as dependency, so install it first:
 ```
+helm repo add traefik https://helm.traefik.io/traefik
+helm repo update
+
 helm install traefik traefik/traefik \
   --set ports.multichain.port=8571 \
   --set ports.multichain.expose=true \
