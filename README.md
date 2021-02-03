@@ -53,7 +53,7 @@ helm upgrade -n sensrnet-registry --install multichain-node sensrnet/multichain-
 **3A.** Deploy the databases (EventStore and MongoDB) first.
 
 ```bash
-helm install -n sensrnet-registry registry-backend sensrnet/registry-backend \
+helm upgrade --install -n sensrnet-registry registry-backend sensrnet/registry-backend \
   --set replicaCount=0
 ```
 
@@ -100,8 +100,8 @@ helm upgrade -n sensrnet-registry --install registry-frontend charts/registry-fr
 Before you can start sharing data with the network, you'll first need sending permissions, as a node will have read-only access by default. First, find the wallet address of your MultiChain pod. Then, share this address with the network admins. Once they've given you sending permissions, you can start participating in the SensRNet distributed ledger.
 
 ```bash
-kubectl get pods -A
-kubectl exec <POD_NAME> -- multichain-cli -datadir=/data SensRNet getaddresses
+kubectl get pods -n sensrnet-registry
+kubectl exec -n sensrnet-registry <POD_NAME> -- multichain-cli -datadir=/data SensRNet getaddresses
 ```
 ## Find Us
 
