@@ -39,7 +39,7 @@ mongodb: # configuration from https://github.com/bitnami/charts/blob/master/bitn
 eventstore: # configuration from https://github.com/EventStore/EventStore.Charts/blob/master/stable/eventstore/values.yaml
   enabled: true
   clusterSize: 3
-  imageTag: release-5.0.1
+  imageTag: release-5.0.9
   eventStoreConfig:
     EVENTSTORE_DISCOVER_VIA_DNS: true
     EVENTSTORE_CLUSTER_DNS: registry-backend-eventstore

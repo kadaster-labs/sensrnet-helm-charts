@@ -1,6 +1,6 @@
 # registry-backend
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.1](https://img.shields.io/badge/AppVersion-0.1.1-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.1](https://img.shields.io/badge/AppVersion-0.1.1-informational?style=flat-square)
 
 A Helm chart for the SensRNet registry back-end
 
@@ -36,7 +36,7 @@ A Helm chart for the SensRNet registry back-end
 | eventstore.eventStoreConfig.EVENTSTORE_MEM_DB | bool | `false` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_RUN_PROJECTIONS | string | `"All"` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_START_STANDARD_PROJECTIONS | bool | `true` |  |
-| eventstore.imageTag | string | `"release-5.0.1"` |  |
+| eventstore.imageTag | string | `"release-5.0.9"` |  |
 | eventstore.persistence.enabled | bool | `true` |  |
 | eventstore.persistence.size | string | `"12Gi"` |  |
 | eventstore.scavenging.enabled | bool | `true` |  |
