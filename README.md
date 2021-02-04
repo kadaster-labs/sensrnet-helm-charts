@@ -23,7 +23,8 @@ helm install -n sensrnet-registry traefik traefik/traefik \
   --set ports.multichain.port=8571 \
   --set ports.multichain.expose=true \
   --set ports.multichain.exposedPort=8571 \
-  --set ports.multichain.protocol=TCP
+  --set ports.multichain.protocol=TCP \
+  --set service.spec.externalTrafficPolicy=Local
 ```
 
 Then, the individual components can be installed. 
