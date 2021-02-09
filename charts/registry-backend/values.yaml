@@ -43,8 +43,6 @@ eventstore: # configuration from https://github.com/EventStore/EventStore.Charts
   eventStoreConfig:
     EVENTSTORE_DISCOVER_VIA_DNS: true
     EVENTSTORE_CLUSTER_DNS: registry-backend-eventstore
-    EVENTSTORE_DEV: true
-    EVENTSTORE_MEM_DB: false
     EVENTSTORE_RUN_PROJECTIONS: All
     EVENTSTORE_START_STANDARD_PROJECTIONS: true
     EVENTSTORE_ENABLE_EXTERNAL_TCP: true
