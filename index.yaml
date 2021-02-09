@@ -18,6 +18,29 @@ entries:
   registry-backend:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2021-02-09T15:23:40.333241811Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.6.0
+    - condition: eventstore.enabled
+      name: eventstore
+      repository: https://eventstore.github.io/EventStore.Charts
+      version: 0.2.5
+    description: A Helm chart for the SensRNet registry back-end
+    digest: b368a43ec8b5f0407a1cc1cc08d66bdf14e64ed7cd86a6d2cd55a8833b3014ca
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://github.com/kadaster-labs/sensrnet-home/blob/master/images/SensRNet-logo.png
+    name: registry-backend
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-registry-backend
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/registry-backend-0.1.2/registry-backend-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2021-02-03T07:38:54.289210937Z"
     dependencies:
     - condition: mongodb.enabled
