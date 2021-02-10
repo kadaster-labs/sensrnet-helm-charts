@@ -4,7 +4,7 @@ metadata:
   name: {{ include "multichain-node.fullname" . }}
   labels:
     {{- include "multichain-node.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
+  {{- with .Values.service.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
