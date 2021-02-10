@@ -29,6 +29,9 @@ A Helm chart for the SensRNet multichain node
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
+| service.annotations | object | `{}` |  |
+| service.externalTrafficPolicy | string | `"Cluster"` |  |
+| service.type | string | `"ClusterIP"` |  |
 | settings.chainName | string | `"SensRNet"` |  |
 | settings.connectToExistingChain | bool | `false` |  |
 | settings.mainNodeHost | string | `"1.2.3.4"` |  |

@@ -28,6 +28,11 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+service:
+  type: ClusterIP
+  annotations: {}
+  externalTrafficPolicy: Cluster
+
 ingress:
   enabled: true
   annotations:
