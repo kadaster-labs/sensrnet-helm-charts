@@ -11,7 +11,7 @@ dependencies:
     condition: eventstore.enabled
 description: A Helm chart for the SensRNet registry back-end
 home: https://github.com/kadaster-labs/sensrnet-home
-icon: https://github.com/kadaster-labs/sensrnet-home/blob/master/images/SensRNet-logo.png
+icon: https://github.com/kadaster-labs/sensrnet-home/blob/main/images/SensRNet-logo.png
 name: registry-backend
 sources:
   - https://github.com/kadaster-labs/sensrnet-registry-backend
