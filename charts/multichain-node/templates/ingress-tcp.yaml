@@ -14,9 +14,11 @@ spec:
   entryPoints:
   - multichain
   routes:
-  - match: HostSNI(`*`)
-    kind: Rule
-    services:
-    - name: {{ $fullName }}
-      port: {{ .Values.settings.p2pPort }}
+    {{- range .Values.ingress.routes }}
+    - kind: Rule
+      match: {{ .match | quote }}
+      services:
+      - name: {{ $fullName }}
+        port: {{ .Values.settings.p2pPort }}
+    {{- end }}
 {{- end }}

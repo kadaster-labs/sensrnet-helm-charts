@@ -20,8 +20,7 @@ A Helm chart for Kubernetes
 | image.repository | string | `"sensrnetnl/registry-frontend"` |  |
 | ingress.annotations."kubernetes.io/ingress.class" | string | `"traefik"` |  |
 | ingress.enabled | bool | `true` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
+| ingress.routes[0].match | string | `"PathPrefix(`/`)"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |

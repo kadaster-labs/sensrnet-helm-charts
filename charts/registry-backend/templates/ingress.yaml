@@ -14,8 +14,9 @@ spec:
   entryPoints:
   - web
   routes:
+    {{- range .Values.ingress.routes }}
   - kind: Rule
-    match: PathPrefix(`/api/`)
+    match: {{ .match | quote }}
     services:
     - kind: Service
       name: {{ $fullName }}
@@ -23,3 +24,4 @@ spec:
       sticky:
         cookie:
           httpOnly: true
+    {{- end}}

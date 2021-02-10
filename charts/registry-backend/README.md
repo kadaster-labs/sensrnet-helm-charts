@@ -43,8 +43,7 @@ A Helm chart for the SensRNet registry back-end
 | image.repository | string | `"sensrnetnl/registry-backend"` |  |
 | ingress.annotations."kubernetes.io/ingress.class" | string | `"traefik"` |  |
 | ingress.enabled | bool | `true` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
+| ingress.routes[0].match | string | `"PathPrefix(`/api/`)"` |  |
 | ingress.tls | list | `[]` |  |
 | mongodb.architecture | string | `"replicaset"` |  |
 | mongodb.auth.enabled | bool | `false` |  |
