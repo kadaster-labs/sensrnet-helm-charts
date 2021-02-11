@@ -1,0 +1,26 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "central-viewer.fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "central-viewer.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    {{- range .Values.ingress.routes }}
+    - kind: Rule
+      match: {{ .match | quote }}
+      services:
+        - kind: Service
+          name: {{ $fullName }}
+          port: {{ $svcPort }}
+    {{- end}}
+{{- end }}
