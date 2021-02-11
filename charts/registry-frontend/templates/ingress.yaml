@@ -15,10 +15,12 @@ spec:
   entryPoints:
     - web
   routes:
+    {{- range .Values.ingress.routes }}
     - kind: Rule
-      match: PathPrefix(`/`)
+      match: {{ .match | quote }}
       services:
         - kind: Service
           name: {{ $fullName }}
           port: {{ $svcPort }}
+    {{- end}}
 {{- end }}

@@ -24,17 +24,17 @@ spec:
           - name: EVENT_STORE_HOST
             value: {{ .Values.settings.eventstore.host }}
           - name: EVENT_STORE_PORT
-            value: "{{ .Values.settings.eventstore.port }}"
+            value: {{ .Values.settings.eventstore.port | quote }}
           - name: JWT_SECRET
             value: {{ .Values.settings.jwtSecret }}
           - name: JWT_ACCESS_EXPIRES_IN
-            value: "{{ .Values.settings.jwtAccessExpiresIn }}"
+            value: {{ .Values.settings.jwtAccessExpiresIn | quote }}
           - name: JWT_REFRESH_EXPIRES_IN
-            value: "{{ .Values.settings.jwtRefreshExpiresIn }}"
+            value: {{ .Values.settings.jwtRefreshExpiresIn | quote }}
           - name: MONGO_HOST
             value: {{ .Values.settings.mongo.host }}
           - name: MONGO_PORT
-            value: "{{ .Values.settings.mongo.port }}"
+            value: {{ .Values.settings.mongo.port | quote }}
           - name: MONGO_DATABASE
             value: {{ .Values.settings.mongo.database }}
           ports:
