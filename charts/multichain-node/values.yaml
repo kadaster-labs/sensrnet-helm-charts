@@ -1,8 +1,9 @@
-replicaCount: 1
-
 image:
   repository: sensrnetnl/multichain-node
   pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
 
 settings:
   connectToExistingChain: false # If false, create a new network
@@ -14,8 +15,17 @@ settings:
     username: username
     password: password
 
-nameOverride: ""
-fullnameOverride: ""
+persistence:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 1Gi
+  annotations: {}
+  ## PV Storage Class
+  ## If defined, storageClassName: <storageClass>
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ## set, choosing the default provisioner
+  # storageClass: null
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -31,6 +41,11 @@ securityContext: {}
 service:
   type: ClusterIP
   annotations: {}
+  ## Serive Traffic Policy
+  ## By setting externalTrafficPolicy to Local, Multichain will communicate its
+  ## external IP to other nodes instead of
+  ## its internal IP address
+  ## Can only be set if type: LoadBalancer is used
   # externalTrafficPolicy: Local
 
 ingress:
