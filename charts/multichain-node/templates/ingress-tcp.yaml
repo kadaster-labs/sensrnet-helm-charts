@@ -1,5 +1,6 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "multichain-node.fullname" . -}}
+{{- $svcPort := .Values.settings.p2pPort -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRouteTCP
 metadata:
@@ -19,6 +20,6 @@ spec:
       match: {{ .match | quote }}
       services:
       - name: {{ $fullName }}
-        port: {{ .Values.settings.p2pPort }}
+        port: {{ $svcPort }}
     {{- end }}
 {{- end }}
