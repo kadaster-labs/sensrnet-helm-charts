@@ -61,6 +61,10 @@ eventstore: # configuration from https://github.com/EventStore/EventStore.Charts
             operator: In
             values:
             - eventstore
+          - key: app.kubernetes.io/component
+            operator: In
+            values:
+            - database
         topologyKey: "kubernetes.io/hostname"
 
 podSecurityContext:
