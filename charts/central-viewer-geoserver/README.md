@@ -15,16 +15,12 @@ A Helm chart for the central viewer geoserver of SensRNet
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| autoscaling.enabled | bool | `false` |  |
-| autoscaling.maxReplicas | int | `100` |  |
-| autoscaling.minReplicas | int | `1` |  |
-| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"sensrnetnl/central-viewer-geoserver"` |  |
 | image.tag | string | `""` |  |
-| ingress.annotations | object | `{}` |  |
-| ingress.enabled | bool | `false` |  |
+| ingress.annotations."kubernetes.io/ingress.class" | string | `"traefik"` |  |
+| ingress.enabled | bool | `true` |  |
 | ingress.routes[0].match | string | `"PathPrefix(`/geoserver`)"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
