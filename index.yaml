@@ -103,6 +103,20 @@ entries:
   sync-bridge:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2021-02-12T10:17:17.169399773Z"
+    description: A Helm chart for the SensRNet sync component between SensRNet registry back-end and MultiChain node
+    digest: 52e2150c0cd37628d06755be14afab85421c54ec2f2842e0c9004607078963c3
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://github.com/kadaster-labs/sensrnet-home/blob/main/images/SensRNet-logo.png
+    name: sync-bridge
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-sync
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/sync-bridge-0.1.1/sync-bridge-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2021-02-02T12:57:27.099882336Z"
     description: A Helm chart for the SensRNet sync component between SensRNet registry back-end and MultiChain node
     digest: 5eca1667e4c94088d7837186e67ac9d566e63b5f4b070663b64e1a56076483a0
