@@ -1,3 +1,5 @@
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/sensrnet)](https://artifacthub.io/packages/search?repo=sensrnet)
+
 # Helm Charts
 
 ## Requires:
