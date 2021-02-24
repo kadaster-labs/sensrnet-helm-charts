@@ -1,0 +1,306 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "affinity": {
+            "type": "object"
+        },
+        "eventstore": {
+            "type": "object",
+            "properties": {
+                "affinity": {
+                    "type": "object",
+                    "properties": {
+                        "podAntiAffinity": {
+                            "type": "object",
+                            "properties": {
+                                "requiredDuringSchedulingIgnoredDuringExecution": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "labelSelector": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "matchExpressions": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "key": {
+                                                                    "type": "string"
+                                                                },
+                                                                "operator": {
+                                                                    "type": "string"
+                                                                },
+                                                                "values": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "topologyKey": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "clusterSize": {
+                    "type": "integer"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "eventStoreConfig": {
+                    "type": "object",
+                    "properties": {
+                        "EVENTSTORE_CLUSTER_DNS": {
+                            "type": "string"
+                        },
+                        "EVENTSTORE_DISABLE_EXTERNAL_TCP_TLS": {
+                            "type": "boolean"
+                        },
+                        "EVENTSTORE_DISCOVER_VIA_DNS": {
+                            "type": "boolean"
+                        },
+                        "EVENTSTORE_ENABLE_EXTERNAL_TCP": {
+                            "type": "boolean"
+                        },
+                        "EVENTSTORE_RUN_PROJECTIONS": {
+                            "type": "string"
+                        },
+                        "EVENTSTORE_START_STANDARD_PROJECTIONS": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "imageTag": {
+                    "type": "string"
+                },
+                "persistence": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "size": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "scavenging": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "fullnameOverride": {
+            "type": "string"
+        },
+        "image": {
+            "type": "object",
+            "properties": {
+                "pullPolicy": {
+                    "type": "string"
+                },
+                "repository": {
+                    "type": "string"
+                }
+            }
+        },
+        "ingress": {
+            "type": "object",
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "properties": {
+                        "kubernetes.io/ingress.class": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "routes": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "match": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "tls": {
+                    "type": "array"
+                }
+            }
+        },
+        "mongodb": {
+            "type": "object",
+            "properties": {
+                "architecture": {
+                    "type": "string"
+                },
+                "auth": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "imageTag": {
+                    "type": "string"
+                },
+                "persistence": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "size": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "podAntiAffinityPreset": {
+                    "type": "string"
+                },
+                "replicaCount": {
+                    "type": "integer"
+                },
+                "service": {
+                    "type": "object",
+                    "properties": {
+                        "port": {
+                            "type": "integer"
+                        },
+                        "portName": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "nameOverride": {
+            "type": "string"
+        },
+        "nodeSelector": {
+            "type": "object"
+        },
+        "podSecurityContext": {
+            "type": "object",
+            "properties": {
+                "fsGroup": {
+                    "type": "integer"
+                }
+            }
+        },
+        "replicaCount": {
+            "type": "integer"
+        },
+        "resources": {
+            "type": "object"
+        },
+        "securityContext": {
+            "type": "object",
+            "properties": {
+                "capabilities": {
+                    "type": "object",
+                    "properties": {
+                        "drop": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "readOnlyRootFilesystem": {
+                    "type": "boolean"
+                },
+                "runAsNonRoot": {
+                    "type": "boolean"
+                },
+                "runAsUser": {
+                    "type": "integer"
+                }
+            }
+        },
+        "service": {
+            "type": "object",
+            "properties": {
+                "port": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "settings": {
+            "type": "object",
+            "properties": {
+                "eventstore": {
+                    "type": "object",
+                    "properties": {
+                        "host": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "jwtAccessExpiresIn": {
+                    "type": "integer"
+                },
+                "jwtRefreshExpiresIn": {
+                    "type": "integer"
+                },
+                "jwtSecret": {
+                    "type": "string"
+                },
+                "mongo": {
+                    "type": "object",
+                    "properties": {
+                        "database": {
+                            "type": "string"
+                        },
+                        "host": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "tolerations": {
+            "type": "array"
+        }
+    }
+}

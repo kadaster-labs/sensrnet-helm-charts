@@ -1,0 +1,133 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "affinity": {
+            "type": "object"
+        },
+        "fullnameOverride": {
+            "type": "string"
+        },
+        "image": {
+            "type": "object",
+            "properties": {
+                "pullPolicy": {
+                    "type": "string"
+                },
+                "repository": {
+                    "type": "string"
+                }
+            }
+        },
+        "ingress": {
+            "type": "object",
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "properties": {
+                        "kubernetes.io/ingress.class": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "routes": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "match": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "tls": {
+                    "type": "array"
+                }
+            }
+        },
+        "nameOverride": {
+            "type": "string"
+        },
+        "nodeSelector": {
+            "type": "object"
+        },
+        "persistence": {
+            "type": "object",
+            "properties": {
+                "accessModes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "annotations": {
+                    "type": "object"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "size": {
+                    "type": "string"
+                }
+            }
+        },
+        "podSecurityContext": {
+            "type": "object"
+        },
+        "resources": {
+            "type": "object"
+        },
+        "securityContext": {
+            "type": "object"
+        },
+        "service": {
+            "type": "object",
+            "properties": {
+                "annotations": {
+                    "type": "object"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "settings": {
+            "type": "object",
+            "properties": {
+                "chainName": {
+                    "type": "string"
+                },
+                "connectToExistingChain": {
+                    "type": "boolean"
+                },
+                "mainNodeHost": {
+                    "type": "string"
+                },
+                "p2pPort": {
+                    "type": "integer"
+                },
+                "rpc": {
+                    "type": "object",
+                    "properties": {
+                        "password": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "integer"
+                        },
+                        "username": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "tolerations": {
+            "type": "array"
+        }
+    }
+}
