@@ -1,0 +1,11 @@
+# Artifact Hub repository metadata file
+#
+repositoryID: 5ed4be9e-cc69-4d2f-aecf-865e2eb13695
+owners:
+    - name: Marc van Andel
+      email: marc.vanandel@kadaster.nl
+    - name: Stefan Bussemaker
+      email: stefan.bussemaker@kadaster.nl
+ignore:
+  - name: mongodb
+  - name: eventstore
