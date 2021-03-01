@@ -3,8 +3,13 @@ appVersion: 0.1.1
 description: A Helm chart for the SensRNet multichain node
 home: https://github.com/kadaster-labs/sensrnet-home
 icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+keywords:
+  - sensrnet
+  - sensorenregister
+  - commonground
+  - haven
 name: multichain-node
 sources:
   - https://github.com/kadaster-labs/sensrnet-multichain
 type: application
-version: 0.2.2
+version: 0.2.3
