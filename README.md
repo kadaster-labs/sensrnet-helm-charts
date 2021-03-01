@@ -55,8 +55,7 @@ helm upgrade -n sensrnet-registry --install multichain-node sensrnet/multichain-
 **3A.** Deploy the databases (EventStore and MongoDB) first.
 
 ```bash
-helm upgrade --install -n sensrnet-registry registry-backend sensrnet/registry-backend \
-  --set replicaCount=0
+helm upgrade --install -n sensrnet-registry registry-backend sensrnet/registry-backend
 ```
 
 Monitor the status of the `registry-backend-eventstore` and `registry-backend-mongodb` pods. Please wait continuing to the next step until all replicas have are running and ready. This might take a couple of minutes. Inspect the dashboard or use the following command to monitor the status:
