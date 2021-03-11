@@ -6,6 +6,8 @@
 - Helm >= 3.2
 - Cluster credentials in kubeconfig
 
+Please note that if you're using other Helm release names from the ones described in this document, make sure they only contain lower case letters and numbers, and may only be separated by dashes. Please refer to the (Helm docs)[https://helm.sh/docs/chart_best_practices/conventions/#chart-names] for further info.
+
 ## Installation
 
 First create a separate namespace for the **SensRNet Registry Node**:
