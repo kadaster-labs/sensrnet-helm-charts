@@ -21,6 +21,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+          - name: REQUIRE_AUTHENTICATION
+            value: {{ .Values.settings.requireAuthentication }}
           - name: EVENT_STORE_HOST
             value: {{ .Values.settings.eventstore.host }}
           - name: EVENT_STORE_PORT
