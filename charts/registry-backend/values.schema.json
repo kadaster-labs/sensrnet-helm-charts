@@ -296,6 +296,9 @@
                             "type": "integer"
                         }
                     }
+                },
+                "requireAuthentication": {
+                    "type": "boolean"
                 }
             }
         },
