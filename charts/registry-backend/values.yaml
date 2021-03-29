@@ -9,6 +9,7 @@ fullnameOverride: ""
 
 
 settings:
+  requireAuthentication: true
   jwtSecret: CHANGE_THIS
   jwtAccessExpiresIn: 86400
   jwtRefreshExpiresIn: 604800

@@ -1,6 +1,6 @@
 # registry-backend
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.1](https://img.shields.io/badge/AppVersion-0.1.1-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.0](https://img.shields.io/badge/AppVersion-0.2.0-informational?style=flat-square)
 
 A Helm chart for the SensRNet registry back-end
 
@@ -62,7 +62,7 @@ A Helm chart for the SensRNet registry back-end
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext.fsGroup | int | `2000` |  |
-| replicaCount | int | `1` |  |
+| replicaCount | int | `0` |  |
 | resources | object | `{}` |  |
 | securityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | securityContext.readOnlyRootFilesystem | bool | `true` |  |
@@ -78,6 +78,7 @@ A Helm chart for the SensRNet registry back-end
 | settings.mongo.database | string | `"sensrnet"` |  |
 | settings.mongo.host | string | `"registry-backend-mongodb-headless"` |  |
 | settings.mongo.port | int | `27017` |  |
+| settings.requireAuthentication | bool | `true` |  |
 | tolerations | list | `[]` |  |
 
 ----------------------------------------------
