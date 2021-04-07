@@ -30,6 +30,37 @@ helm install -n sensrnet-registry traefik traefik/traefik \
   --set service.spec.externalTrafficPolicy=Local
 ```
 
+### OpenID Connect
+The SensRNet stack is constructed in such way that you plug in your own OpenID Connect (OIDC) provider. While you could theoretically plug in the OIDC parameters of your providers into the frontend and backend, we recommend using [Dex](https://dexidp.io/). The default deployments assume integration with Dex. You can define the OIDC connections there and it provides a standardized interface for SensRNet to program against.
+
+```bash
+helm repo add dex https://charts.dexidp.io
+helm repo update
+
+helm upgrade --install dex dex/dex \
+  --namespace dex \
+  --set "livenessProbe.httpPath=/dex/healthz" \
+  --set "readinessProbe.httpPath=/dex/healthz" \
+  --set "config.issuer=http://localhost/dex" \
+  --set "config.storage.type=kubernetes" \
+  --set "config.storage.config.inCluster=true" \
+  --set "config.staticClients[0].name=SensrnetRegistry" \
+  --set "config.staticClients[0].id=registry-frontend" \
+  --set "config.staticClients[0].public=true" \
+  --set "config.connectors[0].type=microsoft" \
+  --set "config.connectors[0].id=microsoft" \
+  --set "config.connectors[0].name=Microsoft" \
+  --set "config.connectors[0].config.clientID=<CLIENT_ID>" \
+  --set "config.connectors[0].config.clientSecret=<CLIENT_SECRET>" \
+  --set "config.connectors[0].config.redirectURI=https://<YOUR_SENSRNET_DOMAIN>/dex/callback" \
+  --set "config.connectors[0].config.tenant=<TENANT_ID>" \
+  --set "config.oauth2.responseTypes={code,token,id_token}" \
+  --set "config.oauth2.skipApprovalScreen=true" \
+  --set "ingress.enabled=true" \
+  --set "ingress.hosts[0].host=<YOUR-SENSRNET-DOMAIN>" \
+  --set "ingress.hosts[0].paths[0].path=/dex"
+```
+
 Then, the individual components can be installed. 
 
 ### Using the chart repo
@@ -121,3 +152,11 @@ Should you have any questions or concerns, please reach out to one of the projec
 ## License
 
 This work is licensed under a [EUPL v1.2 license](./LICENSE.md).
+
+`docker run --rm --volume "$(pwd):/helm-docs" -u $(id -u) jnorwood/helm-docs:latest`
+
+https://github.com/norwoodj/helm-docs
+
+`helm schema-gen values.yaml > values.schema.json`
+
+https://github.com/karuppiah7890/helm-schema-gen
