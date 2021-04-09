@@ -41,7 +41,7 @@ helm upgrade --install dex dex/dex \
   --namespace dex \
   --set "livenessProbe.httpPath=/dex/healthz" \
   --set "readinessProbe.httpPath=/dex/healthz" \
-  --set "config.issuer=http://localhost/dex" \
+  --set "config.issuer=<YOUR-SENSRNET-DOMAIN>/dex" \
   --set "config.storage.type=kubernetes" \
   --set "config.storage.config.inCluster=true" \
   --set "config.staticClients[0].name=SensrnetRegistry" \
@@ -105,9 +105,14 @@ The components can be installed (using the default values) using the following c
 
 ```bash
 helm upgrade -n sensrnet-registry --install registry-backend sensrnet/registry-backend \
-  --set replicaCount=1
+  --set replicaCount=1 \
+  --set ingress.routes[0].match="Host(\`<YOUR-SENSRNET-DOMAIN>\`) && PathPrefix(\`/api/\`)" \
+  --set "settings.oidc_issuer=<YOUR-SENSRNET-DOMAIN>/dex" \
+  --set "settings.oidc_jwks_url=<YOUR-SENSRNET-DOMAIN>/dex/keys"
 helm upgrade -n sensrnet-registry --install sync-bridge sensrnet/sync-bridge
-helm upgrade -n sensrnet-registry --install registry-frontend sensrnet/registry-frontend
+helm upgrade -n sensrnet-registry --install registry-frontend sensrnet/registry-frontend \
+  --set ingress.routes[0].match="Host(\`<YOUR-SENSRNET-DOMAIN>\`) && PathPrefix(\`/\`)" \
+  --set "settings.oidc_issuer=<YOUR-SENSRNET-DOMAIN>/dex"
 ```
 
 ### Using the raw charts
