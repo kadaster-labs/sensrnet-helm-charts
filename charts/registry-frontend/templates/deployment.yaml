@@ -25,6 +25,10 @@ spec:
           env:
             - name: API_URL
               value: {{ .Values.settings.apiUrl }}
+            - name: OIDC_ISSUER
+              value: {{ .Values.settings.oidc_issuer }}
+            - name: OIDC_CLIENT_ID
+              value: {{ .Values.settings.oidc_client_id }}
           args:
             - -health-status=true
           ports:

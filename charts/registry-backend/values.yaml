@@ -10,9 +10,9 @@ fullnameOverride: ""
 
 settings:
   requireAuthentication: true
-  jwtSecret: CHANGE_THIS
-  jwtAccessExpiresIn: 86400
-  jwtRefreshExpiresIn: 604800
+  oidc_issuer: ""
+  oidc_jwks_url: ""
+  oidc_audience: registry-frontend
   eventstore:
     host: registry-backend-eventstore # NAME-eventstore, NAME has to match Helm deployment name
     port: ext-tcp-port
