@@ -274,15 +274,6 @@
                         }
                     }
                 },
-                "jwtAccessExpiresIn": {
-                    "type": "integer"
-                },
-                "jwtRefreshExpiresIn": {
-                    "type": "integer"
-                },
-                "jwtSecret": {
-                    "type": "string"
-                },
                 "mongo": {
                     "type": "object",
                     "properties": {
@@ -296,6 +287,15 @@
                             "type": "integer"
                         }
                     }
+                },
+                "oidc_audience": {
+                    "type": "string"
+                },
+                "oidc_issuer": {
+                    "type": "string"
+                },
+                "oidc_jwks_url": {
+                    "type": "string"
                 },
                 "requireAuthentication": {
                     "type": "boolean"

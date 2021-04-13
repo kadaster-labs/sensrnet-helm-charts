@@ -83,6 +83,12 @@
             "properties": {
                 "apiUrl": {
                     "type": "string"
+                },
+                "oidc_client_id": {
+                    "type": "string"
+                },
+                "oidc_issuer": {
+                    "type": "string"
                 }
             }
         },

@@ -1,6 +1,6 @@
 # registry-backend
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.1](https://img.shields.io/badge/AppVersion-0.2.1-informational?style=flat-square)
+![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.3.0](https://img.shields.io/badge/AppVersion-0.3.0-informational?style=flat-square)
 
 A Helm chart for the SensRNet registry back-end
 
@@ -72,12 +72,12 @@ A Helm chart for the SensRNet registry back-end
 | service.type | string | `"ClusterIP"` |  |
 | settings.eventstore.host | string | `"registry-backend-eventstore"` |  |
 | settings.eventstore.port | string | `"ext-tcp-port"` |  |
-| settings.jwtAccessExpiresIn | int | `86400` |  |
-| settings.jwtRefreshExpiresIn | int | `604800` |  |
-| settings.jwtSecret | string | `"CHANGE_THIS"` |  |
 | settings.mongo.database | string | `"sensrnet"` |  |
 | settings.mongo.host | string | `"registry-backend-mongodb-headless"` |  |
 | settings.mongo.port | int | `27017` |  |
+| settings.oidc_audience | string | `"registry-frontend"` |  |
+| settings.oidc_issuer | string | `""` |  |
+| settings.oidc_jwks_url | string | `""` |  |
 | settings.requireAuthentication | bool | `true` |  |
 | tolerations | list | `[]` |  |
 

@@ -6,6 +6,8 @@ image:
 
 settings:
   apiUrl: /api
+  oidc_issuer: ""
+  oidc_client_id: registry-frontend
 
 nameOverride: ""
 fullnameOverride: ""
