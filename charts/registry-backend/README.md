@@ -44,6 +44,7 @@ A Helm chart for the SensRNet registry back-end
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"sensrnetnl/registry-backend"` |  |
+| image.tag | string | `""` |  |
 | ingress.annotations."kubernetes.io/ingress.class" | string | `"traefik"` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.routes[0].match | string | `"PathPrefix(`/api/`)"` |  |

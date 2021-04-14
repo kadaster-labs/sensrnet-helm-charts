@@ -18,6 +18,7 @@ A Helm chart for Kubernetes
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"sensrnetnl/registry-frontend"` |  |
+| image.tag | string | `""` |  |
 | ingress.annotations."kubernetes.io/ingress.class" | string | `"traefik"` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.routes[0].match | string | `"PathPrefix(`/`)"` |  |
