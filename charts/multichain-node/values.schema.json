@@ -16,6 +16,9 @@
                 },
                 "repository": {
                     "type": "string"
+                },
+                "tag": {
+                    "type": "string"
                 }
             }
         },
@@ -43,9 +46,6 @@
                             }
                         }
                     }
-                },
-                "tls": {
-                    "type": "array"
                 }
             }
         },

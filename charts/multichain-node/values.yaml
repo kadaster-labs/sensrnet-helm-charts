@@ -1,26 +1,42 @@
 image:
+  # -- SensRNet multichain-node image name
   repository: sensrnetnl/multichain-node
+  # -- SensRNet multichain-node image pull policy
   pullPolicy: IfNotPresent
+  # -- SensRNet multichain-node image tag
   tag: ""
 
+# -- String to partially override multichain-node.fullname
 nameOverride: ""
+# -- String to fully override multichain-node.fullname
 fullnameOverride: ""
 
 settings:
-  connectToExistingChain: false # If false, create a new network
-  mainNodeHost: 1.2.3.4 # is ignored if connectToExistingChain is false
+  # -- Whether to connect to an existing chain, or create a new one
+  connectToExistingChain: false
+  # -- Hostname or IP address of the multichain node this node needs to be connected to. Is ignored if connectToExistingChain is false
+  mainNodeHost: ""
+  # -- Name of the chain to create or connect to
   chainName: SensRNet
+  # -- Port used for external access
   p2pPort: 8571
   rpc:
+    # -- Port used for internal (Kubernetes Cluster) JSON-RPC API
     port: 8570
+    # -- JSON-RPC API username
     username: username
+    # -- JSON-RPC API password
     password: password
 
 persistence:
+  # -- Enable multichain persistence using PVC
   enabled: true
+  # -- PVC Access Mode for multichain-node data volume
   accessModes:
     - ReadWriteOnce
+  # -- PVC Storage Request for multichain-node data volume
   size: 1Gi
+  # -- Additional PVC annotations
   annotations: {}
   ## PV Storage Class
   ## If defined, storageClassName: <storageClass>
@@ -28,21 +44,17 @@ persistence:
   ## set, choosing the default provisioner
   # storageClass: null
 
+# -- SensRNet multichain-node pods' Security Context
 podSecurityContext: {}
-  # fsGroup: 2000
-
+# -- SensRNet multichain-node containers' Security Context
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
 
 service:
+  # -- Kubernetes Service type
   type: ClusterIP
+  # -- Service annotations (evaluated as a template)
   annotations: {}
-  ## Serive Traffic Policy
+  ## Service Traffic Policy
   ## By setting externalTrafficPolicy to Local, Multichain will communicate its
   ## external IP to other nodes instead of
   ## its internal IP address
@@ -50,18 +62,22 @@ service:
   # externalTrafficPolicy: Local
 
 ingress:
+  # -- Enable ingress controller resource
   enabled: true
+  # -- Ingress annotations (evaluated as a template)
+  # @default -- Check `values.yaml` file
   annotations:
     kubernetes.io/ingress.class: traefik
-    # kubernetes.io/tls-acme: "true"
+  # -- Ingress routes (evaluated as a template)
+  # @default -- Check `values.yaml` file
   routes:
     - match: HostSNI(`*`)
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
+# -- The requested resources and resources limits for the Multichain-node container (evaluated as a template)
 resources: {}
+# -- Node labels for pod assignment (evaluated as a template)
 nodeSelector: {}
+# -- Tolerations for pod assignment (evaluated as a template)
 tolerations: []
+# -- Affinity for pod assignment (evaluated as a template)
 affinity: {}
