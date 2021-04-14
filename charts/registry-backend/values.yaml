@@ -88,13 +88,9 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: traefik
-    # kubernetes.io/tls-acme: "true"
   routes:
     - match: PathPrefix(`/api/`)
   tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 resources: {}
 nodeSelector: {}

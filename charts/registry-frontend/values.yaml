@@ -14,15 +14,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 podSecurityContext: {}
-  # fsGroup: 2000
-
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -32,13 +24,9 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: traefik
-    # kubernetes.io/tls-acme: "true"
   routes:
     - match: PathPrefix(`/`)
   tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 resources: {}
 nodeSelector: {}
