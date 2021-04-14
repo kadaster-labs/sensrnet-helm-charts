@@ -1,6 +1,7 @@
 image:
   repository: sensrnetnl/multichain-node
   pullPolicy: IfNotPresent
+  tag: ""
 
 nameOverride: ""
 fullnameOverride: ""
