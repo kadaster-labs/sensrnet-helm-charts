@@ -61,12 +61,12 @@ helm upgrade --install dex dex/dex \
   --set "ingress.hosts[0].paths[0].path=/dex"
 ```
 
-Then, the individual components can be installed. 
+Then, the individual components can be installed.
 
 ### Using the chart repo
 
 > :warning: The charts assume that you run >= 3 nodes for pod scheduling of MongoDB and EventStore databases. Setting the clusterSize of Eventstore using `--set` is not working, we're investigating a fix. On testing environments containing less nodes, please proceed to "Using the raw charts".
-> 
+>
 
 **1.** The chart packages are are hosted on GitHub Pages, so you can add that repo.
 
