@@ -150,6 +150,9 @@ kubectl exec -n sensrnet-registry <POD_NAME> -- multichain-cli -datadir=/data Se
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
+### Code
+We use `helmlint` to lint the Helm Charts and `helm-docs` to generate the documentation. The files require a newline at the end of the file and no trailing whitespace. By installing `pre-commit` (you'll need the `pre-commit` and `helm-docs` binaries), you won't have to spend any time on the tooling and formatting the code manually at all. If you don't, CI will let it slide for now, but will catch it for you in the future - but that seems like a waste of your time!
+
 ## Maintainers <a name="maintainers"></a>
 
 Should you have any questions or concerns, please reach out to one of the project's [Maintainers](./MAINTAINERS.md).
