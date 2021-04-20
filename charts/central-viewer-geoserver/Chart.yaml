@@ -12,4 +12,4 @@ name: central-viewer-geoserver
 sources:
   - https://github.com/kadaster-labs/sensrnet-central-viewer-geoserver
 type: application
-version: 0.2.0
+version: 0.2.1
