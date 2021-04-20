@@ -255,6 +255,34 @@ entries:
     version: 0.1.0
   registry-backend:
   - apiVersion: v2
+    appVersion: 0.4.0
+    created: "2021-04-20T16:59:09.79174993Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.6.0
+    - condition: eventstore.enabled
+      name: eventstore
+      repository: https://eventstore.github.io/EventStore.Charts
+      version: 0.2.5
+    description: A Helm chart for the SensRNet registry back-end
+    digest: 34b4757511594b1600b34a42d0781b9afd1d8ae9d410f1221433602801172fb6
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+    keywords:
+    - sensrnet
+    - sensorenregister
+    - commonground
+    - haven
+    name: registry-backend
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-registry-backend
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/registry-backend-0.3.2/registry-backend-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
     appVersion: 0.2.1
     created: "2021-03-30T07:56:54.058954902Z"
     dependencies:
@@ -482,6 +510,25 @@ entries:
     - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/registry-backend-0.1.0/registry-backend-0.1.0.tgz
     version: 0.1.0
   registry-frontend:
+  - apiVersion: v2
+    appVersion: 0.5.0
+    created: "2021-04-20T16:59:09.898978135Z"
+    description: A Helm chart for Kubernetes
+    digest: f81301e9b10df31660aba98f935b66678590e9f602d28e73dcd93557bbcaaef0
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+    keywords:
+    - sensrnet
+    - sensorenregister
+    - commonground
+    - haven
+    name: registry-frontend
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-registry-frontend
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/registry-frontend-0.3.2/registry-frontend-0.3.2.tgz
+    version: 0.3.2
   - apiVersion: v2
     appVersion: 0.3.1
     created: "2021-03-30T07:56:54.203277533Z"
