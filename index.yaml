@@ -70,6 +70,25 @@ entries:
   central-viewer-geoserver:
   - apiVersion: v2
     appVersion: 0.2.0
+    created: "2021-04-20T16:34:13.324537685Z"
+    description: A Helm chart for the central viewer geoserver of SensRNet
+    digest: a153b53bc249fddbc0e5316ff39bdb7bc9dbef1cc222d541e8101593c20a6131
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+    keywords:
+    - sensrnet
+    - sensorenregister
+    - commonground
+    - haven
+    name: central-viewer-geoserver
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-central-viewer-geoserver
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/central-viewer-geoserver-0.2.1/central-viewer-geoserver-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 0.2.0
     created: "2021-03-29T06:37:47.043890442Z"
     description: A Helm chart for the central viewer geoserver of SensRNet
     digest: fe21d2e6bdcfda78506c4f1b9e596693d61207e973478f701f55cec039fc9d47
@@ -135,6 +154,25 @@ entries:
     - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/central-viewer-geoserver-0.1.2/central-viewer-geoserver-0.1.2.tgz
     version: 0.1.2
   multichain-node:
+  - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2021-04-20T16:34:13.472333476Z"
+    description: A Helm chart for the SensRNet multichain node
+    digest: 2d2359a70ee2ed6aa3973e74ac0d3d5ac4de351ef879688c5fc3404601298d1e
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+    keywords:
+    - sensrnet
+    - sensorenregister
+    - commonground
+    - haven
+    name: multichain-node
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-multichain
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/multichain-node-0.3.1/multichain-node-0.3.1.tgz
+    version: 0.3.1
   - apiVersion: v2
     appVersion: 0.2.0
     created: "2021-03-29T06:37:47.152036553Z"
@@ -544,6 +582,25 @@ entries:
     - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/registry-frontend-0.1.0/registry-frontend-0.1.0.tgz
     version: 0.1.0
   sync-bridge:
+  - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2021-04-20T16:34:13.58635766Z"
+    description: A Helm chart for the SensRNet sync component between SensRNet registry back-end and MultiChain node
+    digest: 4d4de79e9c3a3e533edde43aba371c7ebffcfe225fdf3a2db367209cba3cd753
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+    keywords:
+    - sensrnet
+    - sensorenregister
+    - commonground
+    - haven
+    name: sync-bridge
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-sync
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/sync-bridge-0.2.1/sync-bridge-0.2.1.tgz
+    version: 0.2.1
   - apiVersion: v2
     appVersion: 0.2.0
     created: "2021-03-29T06:37:47.493443432Z"
