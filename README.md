@@ -61,12 +61,12 @@ helm upgrade --install dex dex/dex \
   --set "ingress.hosts[0].paths[0].path=/dex"
 ```
 
-Then, the individual components can be installed. 
+Then, the individual components can be installed.
 
 ### Using the chart repo
 
 > :warning: The charts assume that you run >= 3 nodes for pod scheduling of MongoDB and EventStore databases. Setting the clusterSize of Eventstore using `--set` is not working, we're investigating a fix. On testing environments containing less nodes, please proceed to "Using the raw charts".
-> 
+>
 
 **1.** The chart packages are are hosted on GitHub Pages, so you can add that repo.
 
@@ -142,6 +142,11 @@ Before you can start sharing data with the network, you'll first need sending pe
 kubectl get pods -n sensrnet-registry
 kubectl exec -n sensrnet-registry <POD_NAME> -- multichain-cli -datadir=/data SensRNet getaddresses
 ```
+## Automatically update Chart documentation on repo updates
+We use `helmlint` to lint the Helm Charts and `helm-docs` to generate the documentation. The files require a newline at the end of the file and no trailing whitespace. By installing `pre-commit` (you'll need the `pre-commit` and `helm-docs` binaries), you won't have to spend any time on the tooling and formatting the code manually at all. If you don't, CI will let it slide for now, but will catch it for you in the future - but that seems like a waste of your time!
+- [pre-commit installation](https://pre-commit.com/#installation)
+- [helm-docs installation](https://github.com/norwoodj/helm-docs#installation)
+
 ## Find Us
 
 * [GitHub](https://github.com/kadaster-labs/sensrnet-home)
@@ -157,11 +162,3 @@ Should you have any questions or concerns, please reach out to one of the projec
 ## License
 
 This work is licensed under a [EUPL v1.2 license](./LICENSE.md).
-
-`docker run --rm --volume "$(pwd):/helm-docs" -u $(id -u) jnorwood/helm-docs:latest`
-
-https://github.com/norwoodj/helm-docs
-
-`helm schema-gen values.yaml > values.schema.json`
-
-https://github.com/karuppiah7890/helm-schema-gen
