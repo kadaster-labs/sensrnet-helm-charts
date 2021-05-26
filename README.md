@@ -16,7 +16,13 @@ First create a separate namespace for the **SensRNet Registry Node**:
 kubectl create namespace sensrnet-registry
 ```
 
-The SensRNet application has Traefik with additional settings as dependency, so install it first:
+### TCP traffic for multichain node
+One of the components, the multichain node, requires an TCP ingress. It requires an TCP ingress, which is not natively supported by Kubernetes. We currently make use of Traefik v2's IngressRouteTCP CRD, which enables the use of TCP routes. This means we assume Traefik v2 as Ingress Controller with port 8571 exposed. We're looking into supporting Nginx as well, but is currently not supported in this Chart.
+
+The routes are of the Traefik IngressRoute form, for example:
+```ingress.routes[0].match=HostSNI(`*`)```. This is now set as default, the routing is actually done via the Entrypoint, which is the named exposed port in the Traefik v2 Ingress Controller. More information on IngressRouteTCP can be found [here](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp).
+
+The SensRNet application assumes Traefik v2 as Ingress controller, it can be installed as followed, with the correct port exposed:
 
 ```bash
 helm repo add traefik https://helm.traefik.io/traefik
@@ -29,6 +35,8 @@ helm install -n sensrnet-registry traefik traefik/traefik \
   --set ports.multichain.protocol=TCP \
   --set service.spec.externalTrafficPolicy=Local
 ```
+
+`externalTrafficPolicy` is set to `Local` to perserve the client source IP ((source)[https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip]). This allows the multichain-node to record the IP adress of other connecting nodes.
 
 ### OpenID Connect
 The SensRNet stack is constructed in such way that you plug in your own OpenID Connect (OIDC) provider. While you could theoretically plug in the OIDC parameters of your providers into the frontend and backend, we recommend using [Dex](https://dexidp.io/). The default deployments assume integration with Dex. You can define the OIDC connections there and it provides a standardized interface for SensRNet to program against.
