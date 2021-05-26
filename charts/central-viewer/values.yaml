@@ -20,10 +20,8 @@ service:
 
 ingress:
   enabled: true
-  annotations:
-    kubernetes.io/ingress.class: traefik
-  routes:
-    - match: PathPrefix(`/`)
+  annotations: {}
+  host: central-viewer.local
   tls: []
 
 resources: {}

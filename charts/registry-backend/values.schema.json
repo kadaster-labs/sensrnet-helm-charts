@@ -128,26 +128,16 @@
             "type": "object",
             "properties": {
                 "annotations": {
-                    "type": "object",
-                    "properties": {
-                        "kubernetes.io/ingress.class": {
-                            "type": "string"
-                        }
-                    }
+                    "type": "object"
                 },
                 "enabled": {
                     "type": "boolean"
                 },
-                "routes": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "match": {
-                                "type": "string"
-                            }
-                        }
-                    }
+                "host": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
                 },
                 "tls": {
                     "type": "array"
