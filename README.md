@@ -17,7 +17,7 @@ kubectl create namespace sensrnet-registry
 ```
 
 ### TCP traffic for multichain node
-One of the components, the multichain node, requires an TCP ingress. It requires an TCP ingress, which is not natively supported by Kubernetes. We currently make use of Traefik v2's IngressRouteTCP CRD, which enables the use of TCP routes. This means we assume Traefik v2 as Ingress Controller with port 8571 exposed. We're looking into supporting Nginx as well, but is currently not supported in this Chart.
+One of the components, the multichain node, requires an TCP ingress. It requires an TCP ingress. This is not natively supported by Kubernetes. We currently make use of Traefik v2's IngressRouteTCP CRD, which enables the use of TCP routes. This means we assume Traefik v2 as Ingress Controller with port 8571 exposed. We're looking into supporting Nginx as well, but is currently not supported in this Chart.
 
 The routes are of the Traefik IngressRoute form, for example:
 ```ingress.routes[0].match=HostSNI(`*`)```. This is now set as default, the routing is actually done via the Entrypoint, which is the named exposed port in the Traefik v2 Ingress Controller. More information on IngressRouteTCP can be found [here](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp).
