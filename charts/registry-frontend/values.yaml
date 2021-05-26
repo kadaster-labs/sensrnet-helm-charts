@@ -22,10 +22,8 @@ service:
 
 ingress:
   enabled: true
-  annotations:
-    kubernetes.io/ingress.class: traefik
-  routes:
-    - match: PathPrefix(`/`)
+  annotations: {}
+  host: sensrnet.local
   tls: []
 
 resources: {}

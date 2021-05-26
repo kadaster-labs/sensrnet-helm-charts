@@ -26,10 +26,9 @@ service:
 
 ingress:
   enabled: true
-  annotations:
-    kubernetes.io/ingress.class: traefik
-  routes:
-    - match: PathPrefix(`/geoserver`)
+  annotations: {}
+  host: central-viewer.localhost
+  path: /geoserver
   tls: []
 
 resources: {}
