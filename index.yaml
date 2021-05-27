@@ -156,6 +156,25 @@ entries:
   multichain-node:
   - apiVersion: v2
     appVersion: 0.2.0
+    created: "2021-05-27T10:21:44.477706266Z"
+    description: Instructions for installation can be found at https://github.com/kadaster-labs/sensrnet-helm-charts#tcp-traffic-for-multichain-node
+    digest: 541bc13d65a9bda87ab00e980c33970002e891e068ae64408a6b0609f538f38c
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+    keywords:
+    - sensrnet
+    - sensorenregister
+    - commonground
+    - haven
+    name: multichain-node
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-multichain
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/multichain-node-0.3.2/multichain-node-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
+    appVersion: 0.2.0
     created: "2021-04-20T16:34:13.472333476Z"
     description: A Helm chart for the SensRNet multichain node
     digest: 2d2359a70ee2ed6aa3973e74ac0d3d5ac4de351ef879688c5fc3404601298d1e
