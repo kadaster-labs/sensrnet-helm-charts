@@ -17,7 +17,10 @@ kubectl create namespace sensrnet-registry
 ```
 
 ### TCP traffic for multichain node
-One of the components, the multichain node, requires an TCP ingress. It requires an TCP ingress. This is not natively supported by Kubernetes. We currently make use of Traefik v2's IngressRouteTCP CRD, which enables the use of TCP routes. This means we assume Traefik v2 as Ingress Controller with port 8571 exposed. We're looking into supporting Nginx as well, but is currently not supported in this Chart.
+One of the components, the multichain node, requires an TCP ingress. This is not natively supported by Kubernetes. Extra accomodation have to be made in the Loadbalancer to make the node accessible from outside, as regular HTTP connections won't work. Two flavours of Loadbalancers have been tested, Traefik and Nginx-ingress.
+
+#### Traefik 2
+We currently make use of Traefik v2's IngressRouteTCP CRD, which enables the use of TCP routes. This means we assume Traefik v2 as Ingress Controller with port 8571 exposed. 
 
 The routes are of the Traefik IngressRoute form, for example:
 ```ingress.routes[0].match=HostSNI(`*`)```. This is now set as default, the routing is actually done via the Entrypoint, which is the named exposed port in the Traefik v2 Ingress Controller. More information on IngressRouteTCP can be found [here](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp).
@@ -37,6 +40,27 @@ helm install -n sensrnet-registry traefik traefik/traefik \
 ```
 
 `externalTrafficPolicy` is set to `Local` to perserve the client source IP ((source)[https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip]). This allows the multichain-node to record the IP adress of other connecting nodes.
+
+#### Nginx
+It is also possible to route TCP traffic using NGINX Ingress Controller. It works differently from Traefik. It does not define a custom CRD, but instead works with a ConfigMap which lists the TCP routes. More information can be found at:
+https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/
+
+When Nginx was deployed using Helm, TCP routes can easily be added as follows:
+```
+helm upgrade --install -n NGINX_NAMESPACE ingress-nginx ingress-nginx/ingress-nginx \
+  --set tcp.8571=MULTICHAIN_NAMESPACE/multichain-node:8571 \
+  --set service.spec.externalTrafficPolicy=Local
+```
+
+This plugs the multichain service directly in the Ingress Controller. Consequently, the Ingress resource on Multichain is no longer required, i.e.:
+```
+helm upgrade -n sensrnet-registry --install multichain-node charts/multichain-node/ \
+  --set ingress.enabled=false \
+  --set settings.connectToExistingChain=true \
+  --set settings.mainNodeHost=<MAIN_HOST>
+```
+
+TCP connections should now correctly be routed to the MultiChain pod.
 
 ### OpenID Connect
 The SensRNet stack is constructed in such way that you plug in your own OpenID Connect (OIDC) provider. While you could theoretically plug in the OIDC parameters of your providers into the frontend and backend, we recommend using [Dex](https://dexidp.io/). The default deployments assume integration with Dex. You can define the OIDC connections there and it provides a standardized interface for SensRNet to program against.
