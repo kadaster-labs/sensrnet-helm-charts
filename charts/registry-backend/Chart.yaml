@@ -9,7 +9,7 @@ dependencies:
     version: "0.2.5"
     repository: "https://eventstore.github.io/EventStore.Charts"
     condition: eventstore.enabled
-description: A Helm chart for the SensRNet registry back-end
+description: Helm charts for the SensRNet registry back-end
 home: https://github.com/kadaster-labs/sensrnet-home
 icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
 keywords:
@@ -21,4 +21,4 @@ name: registry-backend
 sources:
   - https://github.com/kadaster-labs/sensrnet-registry-backend
 type: application
-version: 0.3.4
+version: 0.3.5
