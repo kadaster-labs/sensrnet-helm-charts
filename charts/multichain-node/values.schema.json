@@ -107,6 +107,9 @@
                 "mainNodeHost": {
                     "type": "string"
                 },
+                "privateKey": {
+                    "type": "string"
+                },
                 "p2pPort": {
                     "type": "integer"
                 },

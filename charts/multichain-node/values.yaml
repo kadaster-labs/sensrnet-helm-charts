@@ -18,6 +18,8 @@ settings:
   mainNodeHost: ""
   # -- Name of the chain to create or connect to
   chainName: SensRNet
+  # -- Private key of this node to join the chain with
+  privateKey: ""
   # -- Port used for external access
   p2pPort: 8571
   rpc:
