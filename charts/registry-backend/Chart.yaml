@@ -21,4 +21,4 @@ name: registry-backend
 sources:
   - https://github.com/kadaster-labs/sensrnet-registry-backend
 type: application
-version: 0.3.5
+version: 0.3.4
