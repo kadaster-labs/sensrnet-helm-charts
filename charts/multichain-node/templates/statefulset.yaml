@@ -49,6 +49,10 @@ spec:
             - name: PARAM_ANYONE_CAN_MINE
               value: "anyone-can-mine|true"
             {{ end }}
+            {{ if .Values.settings.privateKey }}
+            - name: PRIVATE_KEY
+              value: "{{ .Values.settings.privateKey }}"
+            {{ end }}
             - name: NETWORK_PORT
               value: "{{ .Values.settings.p2pPort }}"
             - name: RPC_ALLOW_IP

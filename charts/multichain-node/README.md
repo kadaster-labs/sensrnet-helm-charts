@@ -1,6 +1,6 @@
 # multichain-node
 
-![Version: 0.3.2](https://img.shields.io/badge/Version-0.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.0](https://img.shields.io/badge/AppVersion-0.2.0-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.3.0](https://img.shields.io/badge/AppVersion-0.3.0-informational?style=flat-square)
 
 Instructions for installation can be found at https://github.com/kadaster-labs/sensrnet-helm-charts#tcp-traffic-for-multichain-node
 
@@ -36,6 +36,7 @@ Instructions for installation can be found at https://github.com/kadaster-labs/s
 | settings.chainName | string | `"SensRNet"` | Name of the chain to create or connect to |
 | settings.connectToExistingChain | bool | `false` | Whether to connect to an existing chain, or create a new one |
 | settings.mainNodeHost | string | `""` | Hostname or IP address of the multichain node this node needs to be connected to. Is ignored if connectToExistingChain is false |
+| settings.privateKey | string | `""` | Private key of this node to join the chain with |
 | settings.p2pPort | int | `8571` | Port used for external access |
 | settings.rpc.password | string | `"password"` | JSON-RPC API password |
 | settings.rpc.port | int | `8570` | Port used for internal (Kubernetes Cluster) JSON-RPC API |
