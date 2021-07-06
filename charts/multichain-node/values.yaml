@@ -65,7 +65,7 @@ service:
 
 ingress:
   # -- Enable ingress controller resource
-  enabled: true
+  enabled: false
   # -- Ingress annotations (evaluated as a template)
   # @default -- Check `values.yaml` file
   annotations:
