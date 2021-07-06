@@ -27,6 +27,8 @@ Please apply one of these which is most applicable to your situation.
 
 #### Kubernetes Service Type `LoadBalancer`
 
+> :warning: Using this service type your cloud provider might charge for additional costs!
+
 It is possible to deploy a Kubernetes service on an external available load balancer. In the helm charts the service for MultiChain has the appropriate TCP port configured. By default the service type is set to `ClusterIP` and this has to be updated to `LoadBalancer`:
 
 ```bash
