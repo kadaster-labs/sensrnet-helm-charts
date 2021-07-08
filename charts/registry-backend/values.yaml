@@ -36,6 +36,13 @@ mongodb: # configuration from https://github.com/bitnami/charts/blob/master/bitn
     type: ClusterIP
     port: 27017
     portName: mongo-service
+  resources:
+    limits:
+     cpu: 500m
+     memory: 556Mi
+    requests:
+     cpu: 100m
+     memory: 254Mi
   podAntiAffinityPreset: hard
 
 eventstore: # configuration from https://github.com/EventStore/EventStore.Charts/blob/master/stable/eventstore/values.yaml
@@ -54,6 +61,13 @@ eventstore: # configuration from https://github.com/EventStore/EventStore.Charts
   persistence:
     enabled: true
     size: 12Gi
+  resources:
+    limits:
+     cpu: 700m
+     memory: 1.5Gi
+    requests:
+     cpu: 400m
+     memory: 528Mi
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
