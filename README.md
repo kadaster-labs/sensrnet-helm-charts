@@ -17,7 +17,26 @@ kubectl create namespace sensrnet-registry
 ```
 
 ### TCP traffic for multichain node
-One of the components, the multichain node, requires an TCP ingress. This is not natively supported by Kubernetes. Extra accomodation have to be made in the Loadbalancer to make the node accessible from outside, as regular HTTP connections won't work. Two flavours of Loadbalancers have been tested, Traefik and Nginx-ingress.
+One of the components, the multichain node, requires an TCP exposure. By default this helm chart will expose on the internal load balancer only (a.k.a. `ClusterIP`) and external exposure needs to be configured properly with flags. There are three options available (and tested):
+
+- Kubernetes Service Type `LoadBalancer`
+- Traefik Ingress Controller
+- Nginx Ingress Controller
+
+Please apply one of these which is most applicable to your situation.
+
+#### Kubernetes Service Type `LoadBalancer`
+
+> :warning: Using this service type your cloud provider might charge for additional costs!
+
+It is possible to deploy a Kubernetes service on an external available load balancer. In the helm charts the service for MultiChain has the appropriate TCP port configured. By default the service type is set to `ClusterIP` and this has to be updated to `LoadBalancer`:
+
+```bash
+helm upgrade -n sensrnet-registry --install multichain-node charts/multichain-node/ \
+  --set service.type=LoadBalancer \
+  --set settings.connectToExistingChain=true \
+  --set settings.mainNodeHost=<MAIN_HOST>
+```
 
 #### Traefik 2
 We currently make use of Traefik v2's IngressRouteTCP CRD, which enables the use of TCP routes. This means we assume Traefik v2 as Ingress Controller with port 8571 exposed. 
@@ -31,12 +50,21 @@ The SensRNet application assumes Traefik v2 as Ingress controller, it can be ins
 helm repo add traefik https://helm.traefik.io/traefik
 helm repo update
 
-helm install -n sensrnet-registry traefik traefik/traefik \
+helm install -n traefik traefik traefik/traefik \
   --set ports.multichain.port=8571 \
   --set ports.multichain.expose=true \
   --set ports.multichain.exposedPort=8571 \
   --set ports.multichain.protocol=TCP \
   --set service.spec.externalTrafficPolicy=Local
+```
+
+By default the MultiChain service is installed with a disabled ingress. For the Traefik Ingress this has to be enabled, i.e.:
+
+```bash
+helm upgrade -n sensrnet-registry --install multichain-node charts/multichain-node/ \
+  --set ingress.enabled=true \
+  --set settings.connectToExistingChain=true \
+  --set settings.mainNodeHost=<MAIN_HOST>
 ```
 
 `externalTrafficPolicy` is set to `Local` to perserve the client source IP ((source)[https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip]). This allows the multichain-node to record the IP adress of other connecting nodes.
@@ -52,10 +80,10 @@ helm upgrade --install -n NGINX_NAMESPACE ingress-nginx ingress-nginx/ingress-ng
   --set service.spec.externalTrafficPolicy=Local
 ```
 
-This plugs the multichain service directly in the Ingress Controller. Consequently, the Ingress resource on Multichain is no longer required, i.e.:
+This plugs the multichain service directly in the Ingress Controller. So now we only need to install the MultiChain :
+
 ```
 helm upgrade -n sensrnet-registry --install multichain-node charts/multichain-node/ \
-  --set ingress.enabled=false \
   --set settings.connectToExistingChain=true \
   --set settings.mainNodeHost=<MAIN_HOST>
 ```
