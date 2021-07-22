@@ -48,6 +48,12 @@ spec:
               value: "anyone-can-connect|true"
             - name: PARAM_ANYONE_CAN_MINE
               value: "anyone-can-mine|true"
+            - name: PARAM_PRIVATE_KEY_VERSION
+              value: "private-key-version|80ea7b28"
+            - name: PARAM_ADDRESS_CHECKSUM_VALUE
+              value: "address-checksum-value|344cbb15"
+            - name: PARAM_ADDRESS_PUBKEYHASH_VERSION
+              value: "address-pubkeyhash-version|00f7391c"
             {{ end }}
             {{ if .Values.settings.privateKey }}
             - name: PRIVATE_KEY
