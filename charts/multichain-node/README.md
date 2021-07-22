@@ -1,6 +1,6 @@
 # multichain-node
 
-![Version: 0.4.1](https://img.shields.io/badge/Version-0.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.0](https://img.shields.io/badge/AppVersion-0.4.0-informational?style=flat-square)
+![Version: 0.4.2](https://img.shields.io/badge/Version-0.4.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.0](https://img.shields.io/badge/AppVersion-0.4.0-informational?style=flat-square)
 
 Instructions for installation can be found at https://github.com/kadaster-labs/sensrnet-helm-charts#tcp-traffic-for-multichain-node
 
@@ -20,7 +20,7 @@ Instructions for installation can be found at https://github.com/kadaster-labs/s
 | image.repository | string | `"sensrnetnl/multichain-node"` | SensRNet multichain-node image name |
 | image.tag | string | `""` | SensRNet multichain-node image tag |
 | ingress.annotations | object | Check `values.yaml` file | Ingress annotations (evaluated as a template) |
-| ingress.enabled | bool | `false` | Enable if ingress controller resource is used for external exposure |
+| ingress.enabled | bool | `false` | Enable ingress controller resource |
 | ingress.routes | list | Check `values.yaml` file | Ingress routes (evaluated as a template) |
 | nameOverride | string | `""` | String to partially override multichain-node.fullname |
 | nodeSelector | object | `{}` | Node labels for pod assignment (evaluated as a template) |
@@ -32,12 +32,12 @@ Instructions for installation can be found at https://github.com/kadaster-labs/s
 | resources | object | `{}` | The requested resources and resources limits for the Multichain-node container (evaluated as a template) |
 | securityContext | object | `{}` | SensRNet multichain-node containers' Security Context |
 | service.annotations | object | `{}` | Service annotations (evaluated as a template) |
-| service.type | string | `"ClusterIP"` | Kubernetes Service type; change this into `"LoadBalancer"` if you like to expose via a load balancer |
+| service.type | string | `"ClusterIP"` | Kubernetes Service type |
 | settings.chainName | string | `"SensRNet"` | Name of the chain to create or connect to |
 | settings.connectToExistingChain | bool | `false` | Whether to connect to an existing chain, or create a new one |
 | settings.mainNodeHost | string | `""` | Hostname or IP address of the multichain node this node needs to be connected to. Is ignored if connectToExistingChain is false |
-| settings.privateKey | string | `""` | Private key of this node to join the chain with |
 | settings.p2pPort | int | `8571` | Port used for external access |
+| settings.privateKey | string | `""` | Private key of this node to join the chain with |
 | settings.rpc.password | string | `"password"` | JSON-RPC API password |
 | settings.rpc.port | int | `8570` | Port used for internal (Kubernetes Cluster) JSON-RPC API |
 | settings.rpc.username | string | `"username"` | JSON-RPC API username |
