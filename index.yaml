@@ -175,6 +175,25 @@ entries:
   multichain-node:
   - apiVersion: v2
     appVersion: 0.4.0
+    created: "2021-07-23T07:51:29.86197876Z"
+    description: Instructions for installation can be found at https://github.com/kadaster-labs/sensrnet-helm-charts#tcp-traffic-for-multichain-node
+    digest: 73904fa2c52bf8618ac447b3f166a8a389ce1aa75124f0a9433857f681d64539
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+    keywords:
+    - sensrnet
+    - sensorenregister
+    - commonground
+    - haven
+    name: multichain-node
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-multichain
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/multichain-node-0.4.3/multichain-node-0.4.3.tgz
+    version: 0.4.3
+  - apiVersion: v2
+    appVersion: 0.4.0
     created: "2021-07-22T17:26:33.882994857Z"
     description: Instructions for installation can be found at https://github.com/kadaster-labs/sensrnet-helm-charts#tcp-traffic-for-multichain-node
     digest: 1f7683ff0c7e25304cb3889d24dcff5eb405e6894a3b9b0aae04344c66b484c0
@@ -1052,4 +1071,4 @@ entries:
     urls:
     - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/sync-bridge-0.1.0/sync-bridge-0.1.0.tgz
     version: 0.1.0
-generated: "2021-07-22T17:26:34.159109837Z"
+generated: "2021-07-23T07:51:29.862140563Z"
