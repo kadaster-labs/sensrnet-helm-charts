@@ -37,7 +37,7 @@ persistence:
   accessModes:
     - ReadWriteOnce
   # -- PVC Storage Request for multichain-node data volume
-  size: 1Gi
+  size: 20Gi
   # -- Additional PVC annotations
   annotations: {}
   ## PV Storage Class

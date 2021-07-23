@@ -1,6 +1,6 @@
 # multichain-node
 
-![Version: 0.4.2](https://img.shields.io/badge/Version-0.4.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.0](https://img.shields.io/badge/AppVersion-0.4.0-informational?style=flat-square)
+![Version: 0.4.3](https://img.shields.io/badge/Version-0.4.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.4.0](https://img.shields.io/badge/AppVersion-0.4.0-informational?style=flat-square)
 
 Instructions for installation can be found at https://github.com/kadaster-labs/sensrnet-helm-charts#tcp-traffic-for-multichain-node
 
@@ -27,7 +27,7 @@ Instructions for installation can be found at https://github.com/kadaster-labs/s
 | persistence.accessModes | list | `["ReadWriteOnce"]` | PVC Access Mode for multichain-node data volume |
 | persistence.annotations | object | `{}` | Additional PVC annotations |
 | persistence.enabled | bool | `true` | Enable multichain persistence using PVC |
-| persistence.size | string | `"1Gi"` | PVC Storage Request for multichain-node data volume |
+| persistence.size | string | `"20Gi"` | PVC Storage Request for multichain-node data volume |
 | podSecurityContext | object | `{}` | SensRNet multichain-node pods' Security Context |
 | resources | object | `{}` | The requested resources and resources limits for the Multichain-node container (evaluated as a template) |
 | securityContext | object | `{}` | SensRNet multichain-node containers' Security Context |
