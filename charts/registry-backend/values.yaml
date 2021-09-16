@@ -41,19 +41,27 @@ mongodb: # configuration from https://github.com/bitnami/charts/blob/master/bitn
 eventstore: # configuration from https://github.com/EventStore/EventStore.Charts/blob/master/stable/eventstore/values.yaml
   enabled: true
   clusterSize: 3
-  imageTag: release-5.0.9
+  imageTag: 20.10.2-buster-slim
   eventStoreConfig:
-    EVENTSTORE_DISCOVER_VIA_DNS: true
-    EVENTSTORE_CLUSTER_DNS: registry-backend-eventstore
     EVENTSTORE_RUN_PROJECTIONS: All
-    EVENTSTORE_START_STANDARD_PROJECTIONS: true
+    EVENTSTORE_EXT_TCP_PORT: 1113
+    EVENTSTORE_HTTP_PORT: 2113
+    EVENTSTORE_CLUSTER_GOSSIP_PORT: 2113
+    EVENTSTORE_INT_IP: 0.0.0.0
+    EVENTSTORE_EXT_IP: 0.0.0.0
+    EVENTSTORE_INSECURE: true
     EVENTSTORE_ENABLE_EXTERNAL_TCP: true
-    EVENTSTORE_DISABLE_EXTERNAL_TCP_TLS: true
+    EVENTSTORE_ENABLE_ATOM_PUB_OVER_HTTP: true
+    EVENTSTORE_START_STANDARD_PROJECTIONS: true
+    EVENTSTORE_CLUSTER_DNS: registry-backend-eventstore
+    EVENTSTORE_DISCOVER_VIA_DNS: true
   scavenging:
     enabled: true
   persistence:
     enabled: true
     size: 12Gi
+  securityContext:
+    fsGroup: 1000
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
