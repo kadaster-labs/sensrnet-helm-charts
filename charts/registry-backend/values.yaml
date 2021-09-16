@@ -60,8 +60,6 @@ eventstore: # configuration from https://github.com/EventStore/EventStore.Charts
   persistence:
     enabled: true
     size: 12Gi
-  securityContext:
-    fsGroup: 1000
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
