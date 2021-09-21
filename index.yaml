@@ -2,6 +2,25 @@ apiVersion: v1
 entries:
   central-viewer:
   - apiVersion: v2
+    appVersion: 0.6.3
+    created: "2021-09-21T15:20:14.216673733Z"
+    description: A Helm chart for the central viewer of SensRNet
+    digest: 717db90b4a39a03d49df0b3329b1b8da6676a21a6a97bad6c557e2362e86a301
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+    keywords:
+    - sensrnet
+    - sensorenregister
+    - commonground
+    - haven
+    name: central-viewer
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-central-viewer
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/central-viewer-0.4.1/central-viewer-0.4.1.tgz
+    version: 0.4.1
+  - apiVersion: v2
     appVersion: 0.6.2
     created: "2021-08-10T13:39:51.394624288Z"
     description: A Helm chart for the central viewer of SensRNet
@@ -1214,4 +1233,4 @@ entries:
     urls:
     - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/sync-bridge-0.1.0/sync-bridge-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-10T13:39:52.230417787Z"
+generated: "2021-09-21T15:20:14.216872032Z"
