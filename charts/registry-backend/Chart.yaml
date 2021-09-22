@@ -7,7 +7,7 @@ dependencies:
     condition: mongodb.enabled
   - name: eventstore
     version: "0.2.5"
-    repository: "https://eventstore.github.io/EventStore.Charts"
+    repository: "file://charts/eventstore-0.2.5"
     condition: eventstore.enabled
 description: Helm charts for the SensRNet registry back-end
 home: https://github.com/kadaster-labs/sensrnet-home
