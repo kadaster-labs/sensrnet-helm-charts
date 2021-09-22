@@ -43,6 +43,17 @@ spec:
         - name: {{ . }}
       {{- end}}
       {{- end }}
+      initContainers:
+        - name: chown-er
+          image: busybox:latest
+          command:
+          - chown
+          - -R
+          - 1000:1000
+          - {{ .Values.persistence.mountPath }}
+          volumeMounts:
+          - name: data
+            mountPath: {{ .Values.persistence.mountPath }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image }}:{{ .Values.imageTag }}"
@@ -63,7 +74,7 @@ spec:
                 fieldRef:
                   fieldPath: status.podIP
             {{- end }}
-          {{- if and .Values.extIp (gt .Values.clusterSize 1.0) }}
+          {{- if .Values.extIp }}
             - name: EVENTSTORE_EXT_IP_ADVERTISE_AS
               valueFrom:
                 fieldRef:
