@@ -25,7 +25,6 @@ jobs:
       - name: Add Helm repos
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
-          helm repo add eventstore https://eventstore.github.io/EventStore.Charts
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.2.1
