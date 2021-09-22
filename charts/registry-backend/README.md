@@ -14,7 +14,7 @@ Helm charts for the SensRNet registry back-end
 
 | Repository | Name | Version |
 |------------|------|---------|
-| file://../../vendor/eventstore | eventstore | 0.2.5 |
+| file://../../vendor/eventstore | eventstore | 0.2.6 |
 | https://charts.bitnami.com/bitnami | mongodb | 10.6.0 |
 
 ## Values
