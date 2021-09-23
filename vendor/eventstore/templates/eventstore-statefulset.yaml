@@ -120,7 +120,10 @@ spec:
         namespace: {{ .Release.Namespace | quote }}
         labels:
           app.kubernetes.io/name: {{ include "eventstore.name" . }}
-          helm.sh/chart: {{ include "eventstore.chart" . }}
+          # Hardcode helm.sh/chart label, since we cannot change this name on
+          # Statefulset updates. The tag should not be there, but we already had
+          # a deployment containing it, so therefore it remains here. Sorry...
+          helm.sh/chart: eventstore-0.2.5
           app.kubernetes.io/instance: {{ .Release.Name }}
           app.kubernetes.io/managed-by: {{ .Release.Service }}
       {{- with .Values.persistence.annotations }}

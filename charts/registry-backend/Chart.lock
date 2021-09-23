@@ -6,4 +6,4 @@ dependencies:
   repository: file://../../vendor/eventstore
   version: 0.2.6
 digest: sha256:7aaa156558eb2aefc6e10ba89df6998d1d2c66aa5d6217fb45451f40d94e3c47
-generated: "2021-09-22T13:41:01.6946049+02:00"
+generated: "2021-09-23T18:05:36.9420156+02:00"
