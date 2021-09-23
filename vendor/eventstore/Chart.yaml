@@ -9,5 +9,4 @@ name: eventstore
 sources:
 - https://github.com/EventStore/eventstore-docker
 - https://github.com/EventStore/EventStore
-type: application
 version: 0.2.6
