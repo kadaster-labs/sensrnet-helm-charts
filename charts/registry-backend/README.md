@@ -14,8 +14,8 @@ Helm charts for the SensRNet registry back-end
 
 | Repository | Name | Version |
 |------------|------|---------|
+| file://../../vendor/eventstore | eventstore | 0.2.6 |
 | https://charts.bitnami.com/bitnami | mongodb | 10.6.0 |
-| https://eventstore.github.io/EventStore.Charts | eventstore | 0.2.5 |
 
 ## Values
 
@@ -32,12 +32,18 @@ Helm charts for the SensRNet registry back-end
 | eventstore.clusterSize | int | `3` |  |
 | eventstore.enabled | bool | `true` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_CLUSTER_DNS | string | `"registry-backend-eventstore"` |  |
-| eventstore.eventStoreConfig.EVENTSTORE_DISABLE_EXTERNAL_TCP_TLS | bool | `true` |  |
+| eventstore.eventStoreConfig.EVENTSTORE_CLUSTER_GOSSIP_PORT | int | `2113` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_DISCOVER_VIA_DNS | bool | `true` |  |
+| eventstore.eventStoreConfig.EVENTSTORE_ENABLE_ATOM_PUB_OVER_HTTP | bool | `true` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_ENABLE_EXTERNAL_TCP | bool | `true` |  |
+| eventstore.eventStoreConfig.EVENTSTORE_EXT_IP | string | `"0.0.0.0"` |  |
+| eventstore.eventStoreConfig.EVENTSTORE_EXT_TCP_PORT | int | `1113` |  |
+| eventstore.eventStoreConfig.EVENTSTORE_HTTP_PORT | int | `2113` |  |
+| eventstore.eventStoreConfig.EVENTSTORE_INSECURE | bool | `true` |  |
+| eventstore.eventStoreConfig.EVENTSTORE_INT_IP | string | `"0.0.0.0"` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_RUN_PROJECTIONS | string | `"All"` |  |
 | eventstore.eventStoreConfig.EVENTSTORE_START_STANDARD_PROJECTIONS | bool | `true` |  |
-| eventstore.imageTag | string | `"release-5.0.9"` |  |
+| eventstore.imageTag | string | `"20.10.2-buster-slim"` |  |
 | eventstore.persistence.enabled | bool | `true` |  |
 | eventstore.persistence.size | string | `"12Gi"` |  |
 | eventstore.scavenging.enabled | bool | `true` |  |

@@ -6,8 +6,8 @@ dependencies:
     repository: "https://charts.bitnami.com/bitnami"
     condition: mongodb.enabled
   - name: eventstore
-    version: "0.2.5"
-    repository: "https://eventstore.github.io/EventStore.Charts"
+    version: "0.2.6"
+    repository: "file://../../vendor/eventstore"
     condition: eventstore.enabled
 description: Helm charts for the SensRNet registry back-end
 home: https://github.com/kadaster-labs/sensrnet-home

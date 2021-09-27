@@ -3,7 +3,7 @@ dependencies:
   repository: https://charts.bitnami.com/bitnami
   version: 10.6.0
 - name: eventstore
-  repository: https://eventstore.github.io/EventStore.Charts
-  version: 0.2.5
-digest: sha256:94349db3fa7451156fa33fc171a3258fa1b9d4cf622f7232a9f5d7dfeee1b7ee
-generated: "2021-02-01T14:01:53.8820274+01:00"
+  repository: file://../../vendor/eventstore
+  version: 0.2.6
+digest: sha256:7aaa156558eb2aefc6e10ba89df6998d1d2c66aa5d6217fb45451f40d94e3c47
+generated: "2021-09-23T18:05:36.9420156+02:00"
