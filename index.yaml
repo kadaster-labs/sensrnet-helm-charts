@@ -465,6 +465,34 @@ entries:
   registry-backend:
   - apiVersion: v2
     appVersion: 0.6.0
+    created: "2021-10-06T10:28:57.846990372Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.6.0
+    - condition: eventstore.enabled
+      name: eventstore
+      repository: file://../../vendor/eventstore
+      version: 0.2.6
+    description: Helm charts for the SensRNet registry back-end
+    digest: a6d957e95850dca4001754acac3ba694300be953483f2d9172857b34e7d94369
+    home: https://github.com/kadaster-labs/sensrnet-home
+    icon: https://kadaster-labs.github.io/sensrnet-home/img/SensRNet-logo.png
+    keywords:
+    - sensrnet
+    - sensorenregister
+    - commonground
+    - haven
+    name: registry-backend
+    sources:
+    - https://github.com/kadaster-labs/sensrnet-registry-backend
+    type: application
+    urls:
+    - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/registry-backend-0.5.0/registry-backend-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
+    appVersion: 0.6.0
     created: "2021-08-10T13:39:51.905230991Z"
     dependencies:
     - condition: mongodb.enabled
@@ -1233,4 +1261,4 @@ entries:
     urls:
     - https://github.com/kadaster-labs/sensrnet-helm-charts/releases/download/sync-bridge-0.1.0/sync-bridge-0.1.0.tgz
     version: 0.1.0
-generated: "2021-09-21T15:20:14.216872032Z"
+generated: "2021-10-06T10:28:57.847236676Z"
