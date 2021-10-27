@@ -91,7 +91,11 @@ helm upgrade -n sensrnet-registry --install multichain-node charts/multichain-no
 TCP connections should now correctly be routed to the MultiChain pod.
 
 ### OpenID Connect
-The SensRNet stack is constructed in such way that you plug in your own OpenID Connect (OIDC) provider. While you could theoretically plug in the OIDC parameters of your providers into the frontend and backend, we recommend using [Dex](https://dexidp.io/). The default deployments assume integration with Dex. You can define the OIDC connections there and it provides a standardized interface for SensRNet to program against.
+The SensRNet stack an upstream OpenID Connect (OIDC) provider as user management system. While you could theoretically plug in the OIDC parameters of your providers into the frontend and backend, we recommend using [Dex](https://dexidp.io/) as intermediate. The default deployments assume integration with Dex. You can define the OIDC connections there and it provides a standardized interface for SensRNet to program against.
+
+Dex also supports other protocols, such as LDAP and GitHub, which can easily be plugged in if that suits your usecase better. For an exhaustive list of supported protocols, see https://dexidp.io/docs/connectors/.
+
+An example of what your Dex deployment might look like is as follows:
 
 ```bash
 helm repo add dex https://charts.dexidp.io
@@ -122,6 +126,31 @@ helm upgrade --install dex dex/dex \
 ```
 
 Then, the individual components can be installed.
+
+### Multiple identity providers
+When using Dex, it is possible to add multiple upstream identity providers. The `connectors` field in the Dex config is an array. For two Azure AD environments, deployment will look like:
+```bash
+  ...
+  --set "config.connectors[0].type=microsoft" \
+  --set "config.connectors[0].id=microsoft_a" \
+  --set "config.connectors[0].name=Municipality A" \
+  --set "config.connectors[0].config.clientID=<CLIENT_ID_1>" \
+  --set "config.connectors[0].config.clientSecret=<CLIENT_SECRET_1>" \
+  --set "config.connectors[0].config.redirectURI=https://<YOUR_SENSRNET_DOMAIN>/dex/callback" \
+  --set "config.connectors[0].config.tenant=<TENANT_ID_1>" \
+  --set "config.connectors[1].type=microsoft" \
+  --set "config.connectors[1].id=microsoft_b" \
+  --set "config.connectors[1].name=Municipality B" \
+  --set "config.connectors[1].config.clientID=<CLIENT_ID_2>" \
+  --set "config.connectors[1].config.clientSecret=<CLIENT_SECRET_2>" \
+  --set "config.connectors[1].config.redirectURI=https://<YOUR_SENSRNET_DOMAIN>/dex/callback" \
+  --set "config.connectors[1].config.tenant=<TENANT_ID_2>" \
+  ...
+```
+
+Other types of connectors can be used. When multiple connectors are configured, the SensRNet login page will look as follows:
+![image](https://github.com/kadaster-labs/sensrnet-helm-charts/blob/5708f8dfe35a3b0c6feea04d619bf08ba43a8b13/Dex_multiple_connectors.png)
+
 
 ### Using the chart repo
 
