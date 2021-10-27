@@ -9,6 +9,7 @@ settings:
   initialMemory: 2G
   maximumMemory: 4G
   adminPw: changeit
+  webInterfaceDisabled: true
   mongo:
     host: registry-backend-mongodb-headless
     port: 27017

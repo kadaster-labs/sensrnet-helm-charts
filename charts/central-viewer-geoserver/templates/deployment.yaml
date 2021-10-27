@@ -31,6 +31,8 @@ spec:
               value: {{ .Values.settings.maximumMemory }}
             - name: geoserver_adminpw
               value: {{ .Values.settings.adminPw }}
+            - name: geoserver_console_disabled
+              value: {{ .Values.settings.webInterfaceDisabled }}
             - name: MONGO_HOST
               value: {{ .Values.settings.mongo.host }}
             - name: MONGO_PORT
