@@ -149,7 +149,7 @@ When using Dex, it is possible to add multiple upstream identity providers. The 
 ```
 
 Other types of connectors can be used. When multiple connectors are configured, the SensRNet login page will look as follows:
-![image](https://user-images.githubusercontent.com/56066664/139057169-45816507-43c6-432a-ab02-c973f01ff608.png)
+![image](https://github.com/kadaster-labs/sensrnet-helm-charts/blob/5708f8dfe35a3b0c6feea04d619bf08ba43a8b13/Dex_multiple_connectors.png)
 
 
 ### Using the chart repo
