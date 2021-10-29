@@ -32,7 +32,7 @@ spec:
             - name: geoserver_adminpw
               value: {{ .Values.settings.adminPw }}
             - name: geoserver_console_disabled
-              value: {{ .Values.settings.webInterfaceDisabled }}
+              value: {{ .Values.settings.webInterfaceDisabled | quote }}
             - name: MONGO_HOST
               value: {{ .Values.settings.mongo.host }}
             - name: MONGO_PORT
