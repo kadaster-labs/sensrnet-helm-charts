@@ -38,5 +38,6 @@ A Helm chart for the central viewer geoserver of SensRNet
 | settings.mongo.database | string | `"sensrnet"` |  |
 | settings.mongo.host | string | `"registry-backend-mongodb-headless"` |  |
 | settings.mongo.port | int | `27017` |  |
+| settings.webInterfaceDisabled | bool | `true` |  |
 | tolerations | list | `[]` |  |
 
