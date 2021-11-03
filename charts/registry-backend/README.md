@@ -70,7 +70,7 @@ Helm charts for the SensRNet registry back-end
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext.fsGroup | int | `2000` |  |
-| replicaCount | int | `0` |  |
+| replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | securityContext.readOnlyRootFilesystem | bool | `true` |  |
