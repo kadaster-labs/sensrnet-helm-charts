@@ -22,6 +22,7 @@ A Helm chart for the central viewer of SensRNet
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.host | string | `"central-viewer.local"` |  |
+| ingress.path | string | `"/"` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |

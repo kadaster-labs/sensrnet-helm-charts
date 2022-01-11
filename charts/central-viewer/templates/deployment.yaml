@@ -25,6 +25,8 @@ spec:
           env:
             - name: GEOSERVER_URL
               value: {{ .Values.settings.geoserverUrl }}
+            - name: BASE_HREF
+              value: {{ .Values.ingress.path }}
           args:
             - -health-status=true
           ports:
