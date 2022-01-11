@@ -154,10 +154,7 @@ Other types of connectors can be used. When multiple connectors are configured, 
 
 ### Using the chart repo
 
-> :warning: The charts assume that you run >= 3 nodes for pod scheduling of MongoDB and EventStore databases. Setting the clusterSize of Eventstore using `--set` is not working, we're investigating a fix. On testing environments containing less nodes, please proceed to "Using the raw charts".
->
-
-**1.** The chart packages are are hosted on GitHub Pages, so you can add that repo.
+**1.** The Charts are are hosted on GitHub Pages, so you can add that repo.
 
 ```bash
 helm repo add sensrnet https://kadaster-labs.github.io/sensrnet-helm-charts/
@@ -172,35 +169,25 @@ helm upgrade -n sensrnet-registry --install multichain-node sensrnet/multichain-
   --set settings.mainNodeHost=<MAIN_HOST>
 ```
 
-> :warning: We currently have some trouble getting the EventStore database to initialize properly when deploying in a cloud environment. For this reason, we've divided the deployment step in two parts.
-
-**3A.** Deploy the databases (EventStore and MongoDB) first.
+**3.** Deploy the other components
 
 ```bash
 helm upgrade --install -n sensrnet-registry registry-backend sensrnet/registry-backend
 ```
 
-Monitor the status of the `registry-backend-eventstore` and `registry-backend-mongodb` pods. Please wait continuing to the next step until all replicas have are running and ready. This might take a couple of minutes. Inspect the dashboard or use the following command to monitor the status:
-
-```bash
-kubectl get pods -w
-```
-
-**3B.** Deploy the other components
-
-Once the databases are up and running, the other components can safely be installed. If you skipped 3A this might still work, but we cannot guarantee it.
-
-The components can be installed (using the default values) using the following commands. Other overridable values can be found in the respective folders.
+Once the MultiChain node is up and running, the other components can safely be installed. The components can be installed (using the default values) using the following commands. Other overridable values can be found in the respective folders.
 
 ```bash
 helm upgrade -n sensrnet-registry --install registry-backend sensrnet/registry-backend \
-  --set replicaCount=1 \
-  --set ingress.routes[0].match="Host(\`<YOUR-SENSRNET-DOMAIN>\`) && PathPrefix(\`/api/\`)" \
+  --set ingress.host=<YOUR-SENSRNET-DOMAIN> \
+  --set ingress.path=/api/ \
   --set "settings.oidc_issuer=<YOUR-SENSRNET-DOMAIN>/dex" \
   --set "settings.oidc_jwks_url=<YOUR-SENSRNET-DOMAIN>/dex/keys"
+
 helm upgrade -n sensrnet-registry --install sync-bridge sensrnet/sync-bridge
+
 helm upgrade -n sensrnet-registry --install registry-frontend sensrnet/registry-frontend \
-  --set ingress.routes[0].match="Host(\`<YOUR-SENSRNET-DOMAIN>\`) && PathPrefix(\`/\`)" \
+  --set ingress.host=demo.sensorenregister.nl \
   --set "settings.oidc_issuer=<YOUR-SENSRNET-DOMAIN>/dex"
 ```
 
