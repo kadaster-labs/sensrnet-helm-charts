@@ -10,7 +10,7 @@ fullnameOverride: ""
 
 
 settings:
-  migrate: false
+  migrate: true
   requireAuthentication: true
   oidc_issuer: ""
   oidc_jwks_url: ""
