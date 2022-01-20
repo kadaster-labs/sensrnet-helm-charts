@@ -1,4 +1,3 @@
-{{- if .Values.settings.migrate }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -30,4 +29,3 @@ spec:
           command: [ 'sh', '-c',
               'until mongo --host {{ .Values.settings.mongo.host }}:27017 --eval "printjson(db.serverStatus())";
                   do echo waiting for mongo; sleep 10; done;' ]
-{{- end }}
