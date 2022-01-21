@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "registry-backend.fullname" . }}-migration
+  labels:
+    {{- include "registry-backend.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install,pre-upgrade
+    "helm.sh/hook-weight": "-1"
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: {{ .Chart.Name }}-migration
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MONGO_HOST
+              value: {{ .Values.settings.mongo.host }}
+            - name: MONGO_PORT
+              value: {{ .Values.settings.mongo.port | quote }}
+            - name: MONGO_DATABASE
+              value: {{ .Values.settings.mongo.database }}
+          args: [ 'migrate' ]
+      initContainers:
+        - name: check-mongo-ready
+          image: mongo:4.4.3
+          command: [ 'sh', '-c',
+              'until mongo --host {{ .Values.settings.mongo.host }}:27017 --eval "printjson(db.serverStatus())";
+                  do echo waiting for mongo; sleep 10; done;' ]
